@@ -34,14 +34,24 @@
 ## Wireframes
 
 #### Desktop Wireframes
-- 
+- [Home screen](docs/wireframes/desktop-home.png)
+- [Game screen (easy)](docs/wireframes/desktop-easy-mode.png)
+- [Game screen (medium)](docs/wireframes/desktop-medium-mode.png)
+- [Game screen (hard)](docs/wireframes/desktop-hard-mode.png)
+- [Game over screen](docs/wireframes/desktop-game-over.png)
+- [Rules modal](docs/wireframes/desktop-rules.png)
 
 #### Tablet Wireframes
-- 
+- [Home screen](docs/wireframes/tablet-home.png)
+- [Game screen](docs/wireframes/tablet-game-screen.png)
+- [Game over](docs/wireframes/tablet-game-over.png)
+- [Rules modal](docs/wireframes/tablet-rules.png)
 
 #### Mobile Wireframes
-- 
-
+- [Home screen](docs/wireframes/mobile-home.png)
+- [Game screen](docs/wireframes/mobile-game-screen.png)
+- [Game over](docs/wireframes/mobile-game-over.png)
+- [Rules modal](docs/wireframes/mobile-rules.png)
 ## Features
 
 ### Existing Features

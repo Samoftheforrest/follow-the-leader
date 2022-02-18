@@ -63,10 +63,12 @@
 ## Technologies Used
 
 ### Languages
-- 
+- [HTML]()
+- [CSS]()
+- [JavaScript]()
 
 ### Frameworks
-- 
+- [Bootstrap]()
 
 ## Testing
 
@@ -79,6 +81,9 @@
 ## Deployment
 
 ### Local Development
+- install node modules
+- make a note that jquery node module has been left in for anyone who wishes to use it (add in link to jQuery)
+- explain browserify command to compile code
 
 ### Deployment
 

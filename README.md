@@ -83,8 +83,9 @@
 ### Local Development
 - install node modules
 - make a note that jquery node module has been left in for anyone who wishes to use it (add in link to jQuery)
+- @TODO: find out why Bootstrap JS not compiling on local machine, but working on gitpod
 - explain browserify command to compile code
-    - when using gitpod, browserify has to be installed every time
+    - have to install browserify every time
 
 ### Deployment
 

@@ -84,6 +84,7 @@
 - install node modules
 - make a note that jquery node module has been left in for anyone who wishes to use it (add in link to jQuery)
 - explain browserify command to compile code
+    - when using gitpod, browserify has to be installed every time
 
 ### Deployment
 

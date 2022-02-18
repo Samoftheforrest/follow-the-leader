@@ -185,15 +185,10 @@ process.chdir = function (dir) {
 process.umask = function() { return 0; };
 
 },{}],2:[function(require,module,exports){
+// require packages via npm
 let bootstrap = require("bootstrap");
 let $ = require( "jquery" );
 
-$(document).ready(function() {
-    $('body').click(function() {
-        $(this).css('height', '100vh');
-        $(this).css("background", "red");
-    })
-})
 },{"bootstrap":4,"jquery":5}],3:[function(require,module,exports){
 (function (process){(function (){
 /**

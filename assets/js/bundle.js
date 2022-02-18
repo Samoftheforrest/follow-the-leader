@@ -189,8 +189,9 @@ let bootstrap = require("bootstrap");
 let $ = require( "jquery" );
 
 $(document).ready(function() {
-    $('p').click(function() {
-        $(this).css("color", "red");
+    $('body').click(function() {
+        $(this).css('height', '100vh');
+        $(this).css("background", "red");
     })
 })
 },{"bootstrap":4,"jquery":5}],3:[function(require,module,exports){

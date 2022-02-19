@@ -10,7 +10,7 @@
 - 
 
 ### User Stories
-- 
+- As a user, I should be able to play the game on both mobile and desktop devices.
 
 ### Site Owner's Goals
 - 
@@ -31,7 +31,7 @@
 
 #### Fonts
 
-## Wireframes
+### Wireframes
 
 #### Desktop Wireframes
 - [Home screen](docs/wireframes/desktop-home.png)
@@ -52,13 +52,23 @@
 - [Game screen](docs/wireframes/mobile-game-screen.png)
 - [Game over](docs/wireframes/mobile-game-over.png)
 - [Rules modal](docs/wireframes/mobile-rules.png)
+
+### UX/UI Flowchart
+- [UX/UI Flowchart](docs/uxui/flowchart/minefield-memory-uxui-flowchart.png)
+
 ## Features
 
 ### Existing Features
 - 
 
 ### Features to be Implemented
-- 
+
+**Hint**
+- Add in a "hint" that checks whether the square right of, or below the player, has the "path" class on it, and changes the colour of the square to let the player know it is safe to walk on.
+
+**Minesweeper Mode**
+- Add in a version of the game in which there is no leader! As the player steps through the minefield, they have to hover their mouse over the surrounding squares to detect mines.
+    - Add a note about how this would have to be a desktop only game because you cannot hover on smaller screen sizes.
 
 ## Technologies Used
 

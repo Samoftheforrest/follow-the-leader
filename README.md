@@ -1,4 +1,4 @@
-# Follow the Leader
+# Minefield Memory - A Follower the Leader Game
 
 ## Goal For This Project
 
@@ -70,15 +70,18 @@
 - Add in a version of the game in which there is no leader! As the player steps through the minefield, they have to hover their mouse over the surrounding squares to detect mines.
     - Add a note about how this would have to be a desktop only game because you cannot hover on smaller screen sizes.
 
+**Multiplayer Mode**
+- A version of the game in which one player is the "leader" - this player goes first and creates the path. Then, the second player has to copy the path exactly.
+
 ## Technologies Used
 
 ### Languages
-- [HTML]()
-- [CSS]()
-- [JavaScript]()
+- [HTML](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics)
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 ### Frameworks
-- [Bootstrap]()
+- [Bootstrap](https://getbootstrap.com/)
 
 ## Testing
 
@@ -92,7 +95,7 @@
 
 ### Local Development
 - install node modules
-- make a note that jquery node module has been left in for anyone who wishes to use it (add in link to jQuery)
+- make a note that jquery node module has been left in for anyone who wishes to use it (add in link to jQuery) [jQuery](https://jquery.com/)
 - @TODO: find out why Bootstrap JS not compiling on local machine, but working on gitpod
 - explain browserify command to compile code
     - have to install browserify every time

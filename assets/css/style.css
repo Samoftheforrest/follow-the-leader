@@ -1,2 +1,33 @@
 /* imports */
 @import url('https://fonts.googleapis.com/css2?family=Harmattan:wght@400;700&display=swap'); /* google font */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 62.5%;
+    font-family: 'Harmattan', sans-serif;
+}
+
+header {
+    padding: 15px 5px;
+}
+
+.nav-list {
+    margin: 0;
+    padding: 0;
+}
+
+.nav-list-item {
+    list-style: none;
+}
+
+.nav-list-item a {
+    text-decoration: none;
+    color: #000;
+    margin: 0 .75rem;
+    font-size: 1.5rem;
+}

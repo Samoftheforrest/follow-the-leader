@@ -1,19 +1,36 @@
 # Minefield Memory - A Follower the Leader Game
+- Add Am I responsive image here once design is complete
 
 ## Goal For This Project
 
+
 ## Table of Contents
+- Add this in once README is complete.
 
 ## UX/UI
 
 ### User Goals
-- 
+- Website needs to be visually appealing.
+- Ability to track your score as the game progresses.
+- Ability to select difficulty, to choose the appropriate level of challenge.
+- Once difficulty has been selected, difficulty then increments when each round is completed.
+- Website needs to be functional on various devices (e.g. mobile, tablet and desktop).
 
 ### User Stories
 - As a user, I should be able to play the game on both mobile and desktop devices.
+- As a user, I would expect the game to have an appealing aesthetic that is appropriate for the game's concept.
+- As a user, I would like to be able to select the game's difficulty.
+- As a user, I would like the game's difficulty to increase slightly as the game progresses - to keep it engaging.
+- As a user, I would like to be able to check the rules at any time during the game.
+- As a user, I would like to be able to play the game using either using a keyboard or mouse/mobile clicks.
+- As a user, I would like to be able to track my score as the game progresses.
+- As a user, I would like to be able to contact the game's creator in order to provide feedback.
 
 ### Site Owner's Goals
-- 
+- I would like to create a game that users find engaging.
+- I wanted to create a game with features not usually found in standard memory games.
+- I want users to be able to easily give feedback on the game - allowing me to revise the game and improve the user experience.
+- I would like to create a game that is visually appealing.
 
 ### User Requirements and Expectations
 
@@ -72,6 +89,12 @@
 
 **Multiplayer Mode**
 - A version of the game in which one player is the "leader" - this player goes first and creates the path. Then, the second player has to copy the path exactly.
+
+**Time-trial Mode**
+- A version of the game which the user has to race against the clock to complete as many runs through the minefield as possible.
+
+**Save High Scores**
+- Allow users to save their highest score, and have an additional page in which displays a leaderboard of the highest scores of all players.
 
 ## Technologies Used
 

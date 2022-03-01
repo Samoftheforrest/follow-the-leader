@@ -1,6 +1,16 @@
 /* imports */
 @import url('https://fonts.googleapis.com/css2?family=Harmattan:wght@400;700&display=swap'); /* google font */
 
+/* variables */
+:root {
+    --dark-jungle-green: #1f242180;
+    --skobeloff: #216869;
+    --shiny-shamrock: #49a078;
+    --eton-blue: #9cc5a1;
+    --platinum: #dce1de;
+}
+
+/* CSS reset */
 * {
     padding: 0;
     margin: 0;

@@ -49,11 +49,11 @@ Below, I will go explain the individual colours' uses more carefully.
 
 ![Colour palette](/docs/colour-palette.png)
 
-- #1f242180: As this colour is the darkest, I decided to use it mainly to outline, or as box shadow - note: the '80' on the end of this hex code sets the opacity of this colour to 50%.
-- #216869: This colour was used as the main background of the page, as I felt that the other colours would stand out well against it.
-- #49a078: I used this colour as the background for the following elements: the header, the game board container, and the social icons section.
-- #9cc5a1: I used this colour as the background for only the game board's squares. I thought it would be appropriate to give the squares a unique colour to pull the user's attention toward them. 
-- #dce1de: I used this colour for all of the text.
+- `#1f242180`: As this colour is the darkest, I decided to use it mainly to outline, or as box shadow - note: the '80' on the end of this hex code sets the opacity of this colour to 50%.
+- `#216869`: This colour was used as the main background of the page, as I felt that the other colours would stand out well against it.
+- `#49a078`: I used this colour as the background for the following elements: the header, the game board container, and the social icons section.
+- `#9cc5a1`: I used this colour as the background for only the game board's squares. I thought it would be appropriate to give the squares a unique colour to pull the user's attention toward them. 
+- `#dce1de`: I used this colour for all of the text, as it provided the most contrast with the background.
 
 #### Fonts
 I used [Google Fonts](https://fonts.google.com/) to select the page's fonts. I used [Harmattan](https://fonts.google.com/specimen/Harmattan?query=harmat), in two different weights, for all of the game's text, as I thought it was inkeeping with the simple aesthetic.

@@ -3,6 +3,9 @@
 
 ## Goal For This Project
 
+Welcome to Minefield Memory!
+
+Trapped behind enemy lines, with a set of trecherous minefields ahead, how many of your comrades will you be able to save? Follow your captain, the ironically named Sgt M. Field to safety.
 
 ## Table of Contents
 - Add this in once README is complete.

@@ -38,10 +38,18 @@ Trapped behind enemy lines, with a set of trecherous minefields ahead, how many 
 ### User Requirements and Expectations
 
 #### Requirements
-- 
+- Should be visually appealing
+- Should be easily navigable - using either keyboard, mouse, or thumb click on mobile
+- To track the user's score
+- The ability for the user to select a difficulty
+- To be able to change difficulty at any time
 
 #### Expectations
-- 
+- When a difficulty is selected, an appropriately difficult minefield should appear
+- The user should only be able to move one sqaure at a time
+- A tally of the score on screen for the user to keep track of
+- The ability to return to the start of the game, and select a new difficulty using the 'home' link in the navigation
+- That the rules modal appears when 'rules' is selected from the nav
 
 ### Design Choices
 
@@ -89,7 +97,11 @@ I used [Google Fonts](https://fonts.google.com/) to select the page's fonts. I u
 ## Features
 
 ### Existing Features
-- 
+- The ability to move using either keyboard or mouse (or thumb clicks on mobile devices)
+- Ability to choose between three difficulty levels: easy, medium and hard
+- Randomised paths through the minefield - meaning no two games are the same!
+- The ability to provide feedback via social media (through links)
+- Check the rules/how to play the game at any time by opening up the rules modal
 
 ### Features to be Implemented
 
@@ -119,9 +131,108 @@ I used [Google Fonts](https://fonts.google.com/) to select the page's fonts. I u
 ### Frameworks
 - [Bootstrap](https://getbootstrap.com/)
 
+### Design
+- [Figma](https://www.figma.com)
+- [Font Awesome](https://fontawesome.com/)
+- [Google Fonts](https://fonts.google.com/)
+
 ## Testing
 
-### Example Test
+### Test Name
+**As a user, I should be able to play the game on both mobile and desktop devices.**
+- **Plan**
+
+- **Implementation**
+
+- **Test**
+
+- **Result**
+
+- **Verdict**
+
+### Test Name
+**As a user, I would expect the game to have an appealing aesthetic that is appropriate for the game's concept.**
+- **Plan**
+
+- **Implementation**
+
+- **Test**
+
+- **Result**
+
+- **Verdict**
+
+### Test Name
+**As a user, I would like to be able to select the game's difficulty.**
+- **Plan**
+
+- **Implementation**
+
+- **Test**
+
+- **Result**
+
+- **Verdict**
+
+### Test Name
+**As a user, I would like the game's difficulty to increase slightly as the game progresses - to keep it engaging.**
+- **Plan**
+
+- **Implementation**
+
+- **Test**
+
+- **Result**
+
+- **Verdict**
+
+### Test Name
+**As a user, I would like to be able to check the rules at any time during the game.**
+- **Plan**
+
+- **Implementation**
+
+- **Test**
+
+- **Result**
+
+- **Verdict**
+
+### Test Name
+**As a user, I would like to be able to play the game using either using a keyboard or mouse/mobile clicks.**
+- **Plan**
+
+- **Implementation**
+
+- **Test**
+
+- **Result**
+
+- **Verdict**
+
+### Test Name
+**As a user, I would like to be able to track my score as the game progresses.**
+- **Plan**
+
+- **Implementation**
+
+- **Test**
+
+- **Result**
+
+- **Verdict**
+
+### Test Name
+**As a user, I would like to be able to contact the game's creator in order to provide feedback.**
+- **Plan**
+
+- **Implementation**
+
+- **Test**
+
+- **Result**
+
+- **Verdict**
 
 ## Bugs
 

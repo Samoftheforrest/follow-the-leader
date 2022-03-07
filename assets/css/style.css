@@ -98,7 +98,7 @@ header {
 }
 
 /* set heights for the game board */
-.game-board {
+.game-area {
     background: var(--shiny-shamrock);
     min-height: 440px;
     height: 65vh;
@@ -141,8 +141,47 @@ header {
     color: var(--dark-jungle-green);
 }
 
-/* social icons */
+/*game board*/
+.game-squares {
+    height: 60%;
+}
 
+.squares {
+    width: 90%;
+    height: 100%;
+    margin: auto;
+    border: 2px solid var(--platinum);
+}
+
+.square {
+    border: 2px solid var(--platinum);
+    display: inline-block;
+}
+
+
+.message-title {
+    font-weight: 700;
+    font-size: 2.2rem;
+    margin-bottom: 0;
+}
+
+.message {
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.points {
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.score {
+    font-size: 4rem;
+    line-height: 1;
+}
+
+/* social icons */
 footer {
     position: absolute;
     bottom: 1.5rem;
@@ -174,5 +213,18 @@ footer {
     header {
         padding: 1.5rem 5px;
         margin-bottom: 1.5rem
+    }
+
+    .intro-text {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .intro-title {
+        font-size: 2.5rem;
+    }
+    .intro-text {
+        font-size: 1.6rem;
     }
 }

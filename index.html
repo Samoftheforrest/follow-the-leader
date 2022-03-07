@@ -13,14 +13,14 @@
 <header id="header">
     <div class="container">
         <div class="row">
-            <div class="col-sm-6 d-flex justify-content-center justify-content-sm-start">
+            <div class="col-sm-9 d-flex justify-content-center justify-content-sm-start">
                 <h1 class="main-title"><a href="#">Minefield Memory</a></h1>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-3">
                 <nav class="d-flex align-items-center justify-content-center justify-content-sm-end h-100">
                     <ul class="d-flex nav-list">
-                        <li class="nav-list-item"><a href="#">Home</a></li>
-                        <li class="nav-list-item"><a href="#">Rules</a></li>
+                        <li class="nav-list-item d-flex align-items-center"><a href="#">Home</a></li>
+                        <li class="nav-list-item d-flex align-items-center"><a href="#">Rules</a></li>
                     </ul>
                 </nav>
             </div>
@@ -28,7 +28,7 @@
     </div>
 </header><!-- header -->
 <section class="container">
-    <div class="intro-screen game-board">
+    <div class="intro-screen game-area">
         <div class="row m-0 w-100 h-100">
             <div class="col d-flex flex-column justify-content-center align-items-center">
                 <h2 class="intro-title">Introduction</h2>
@@ -44,7 +44,26 @@
             </div>
         </div>
     </div>
-</section><!-- game section -->
+</section><!-- intro screen -->
+<section class="container">
+    <div class="game-board game-area d-none">
+        <div class="row m-0 w-100 h-100">
+            <div class="col-lg-6 game-squares d-flex justify-content-center flex-wrap p-0">
+                <div class="squares d-flex flex-wrap"></div>
+            </div>
+            <div class="col-lg-5 game-score px-3 d-flex flex-lg-column justify-content-center align-items-lg-center">
+                <div class="w-50 text-center">
+                    <h2 class="message-title">Sgt. M. Field:</h2>
+                    <p class="message text-center">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni sequi quae id fuga obcaecati nostrum sunt commodi debitis quia voluptas aspernatur quas rerum ullam maiores aperiam repellendus, nam beatae incidunt!</p>
+                </div>
+                <div class="w-50 text-center">
+                    <p class="points">Points:</p>
+                    <p class="score">60</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- game board -->
 <footer class="container">
     <section class="social-icons">
         <div class="row">

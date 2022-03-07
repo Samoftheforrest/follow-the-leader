@@ -17,6 +17,11 @@
     box-sizing: border-box;
 }
 
+p {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-size: 62.5%;
     font-family: 'Harmattan', sans-serif;
@@ -143,7 +148,7 @@ header {
 
 /*game board*/
 .game-squares {
-    height: 60%;
+    height: 75%;
 }
 
 .squares {
@@ -158,6 +163,9 @@ header {
     display: inline-block;
 }
 
+.message-wrap {
+    width: 50%;
+}
 
 .message-title {
     font-weight: 700;
@@ -168,6 +176,15 @@ header {
 .message {
     font-size: 1rem;
     line-height: 1;
+    padding: 0 5%;
+}
+
+.game-score {
+    height: 25%;
+}
+
+.score-wrap {
+    width: 50%;
 }
 
 .points {
@@ -226,5 +243,34 @@ footer {
     }
     .intro-text {
         font-size: 1.6rem;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    /*game board*/
+    .game-squares {
+        height: 100%;
+    }
+
+    .message-title {
+        font-size: 4rem;
+    }
+
+    .message {
+        font-size: 1.75rem;
+        margin-bottom: 2rem;
+    }
+
+    .game-score {
+        height: 100%;
+    }
+
+    .points {
+        font-size: 4rem;
+        margin-bottom: 0;
+    }
+
+    .score {
+        font-size: 6rem;
     }
 }

@@ -23,7 +23,6 @@ Trapped behind enemy lines, with a set of trecherous minefields ahead, how many 
 - As a user, I should be able to play the game on both mobile and desktop devices.
 - As a user, I would like to be able to select the game's difficulty.
 - As a user, I would like the game's difficulty to increase slightly as the game progresses - to keep it engaging.
-- As a user, I would like to be able to check the rules at any time during the game.
 - As a user, I would like to be able to play the game using either using a keyboard or mouse/mobile clicks.
 - As a user, I would like to be able to track my score as the game progresses.
 - As a user, I would like to be able to contact the game's creator in order to provide feedback.
@@ -139,11 +138,14 @@ I used [Google Fonts](https://fonts.google.com/) to select the page's fonts. I u
 
 ### Responsivity
 **As a user, I should be able to play the game on both mobile and desktop devices.**
-- **Plan** I would like the page's layout to rearrange, based on the size of the device it is viewed on, in order to present the information in the most effect way possible.
+- **Plan**
+I would like the page's layout to rearrange, based on the size of the device it is viewed on, in order to present the information in the most effect way possible.
 
-- **Implementation** I will use a combination of CSS media queries and Bootstrap classes in order to change the page's layout dependent on the user's device's viewport. I will base the CSS media queries on the default Bootstrap breakpoints.
+- **Implementation**
+I will use a combination of CSS media queries and Bootstrap classes in order to change the page's layout dependent on the user's device's viewport. I will base the CSS media queries on the default Bootstrap breakpoints.
 
 - **Test**
+I will use the [Chrome Developer Tools](https://developer.chrome.com/docs/devtools/) to resize the browser to emulate three mobile devices (Galaxy S20, iPhone SE and an iPad mini) and to ensure that the design is appropriate for each screen size.
 
 - **Result**
 
@@ -151,35 +153,31 @@ I used [Google Fonts](https://fonts.google.com/) to select the page's fonts. I u
 
 ### Select Difficulty
 **As a user, I would like to be able to select the game's difficulty.**
-- **Plan** When the game begins, the user will be presented with three buttons: easy, medium, and hard. Depending on which button the user clicks, a game board with a different amount of sqaures (based on the difficulty selected) will appear.
-
-- **Implementation** I created three buttons (using `<a>` tags) within the site's HTML. Within the JavaScript, I created an object that contains information about the different difficulties. I then selected all of the buttons using `document.querySelectorAll()`, iterrated over them using a forEach loop and added a click event listener to each button which runs the startGame function with an arugment set to the button's index in the forEach loop (0 is easy, 1 is medium, 2 is hard). This argument then corresponds to the difficulty object and determines what displays onscreen.
-
-- **Test** I will click on each of these buttons 5 times to see if the correct amount of squares are generated on the game board.
-
-- **Result** On each of the clicks, for all of the buttons, the correct amount of squares were generated and displayed onscreen.
-
-- **Verdict** This test has been successful.
-
-### Test Name
-**As a user, I would like the game's difficulty to increase slightly as the game progresses - to keep it engaging.**
 - **Plan**
+When the game begins, the user will be presented with three buttons: easy, medium, and hard. Depending on which button the user clicks, a game board with a different amount of sqaures (based on the difficulty selected) will appear.
 
 - **Implementation**
+I created three buttons (using `<a>` tags) within the site's HTML. Within the JavaScript, I created an object that contains information about the different difficulties. I then selected all of the buttons using `document.querySelectorAll()`, iterrated over them using a forEach loop and added a click event listener to each button which runs the startGame function with an arugment set to the button's index in the forEach loop (0 is easy, 1 is medium, 2 is hard). This argument then corresponds to the difficulty object and determines what displays onscreen.
 
 - **Test**
+I will click on each of these buttons 5 times to see if the correct amount of squares are generated on the game board.
 
 - **Result**
+On each of the clicks, for all of the buttons, the correct amount of squares were generated and displayed onscreen.
 
 - **Verdict**
+This test has been successful.
 
-### Test Name
-**As a user, I would like to be able to check the rules at any time during the game.**
+### Increasing Difficulty
+**As a user, I would like the game's difficulty to increase slightly as the game progresses - to keep it engaging.**
 - **Plan**
+Every time the user reaches the final square of the game board, the game will begin again, with the leader moving through the game board slightly faster than the previous game.
 
 - **Implementation**
+When the game begins, the leader's speed is determined by the `startingSpeed` key of the 'difficulties' object, which varies depending on the difficulty selected. As part of the logic for the player successfully completing a round of the game - by reaching the final square - I will include logic that slightly decrements the leader's speed every time a new round begins.
 
 - **Test**
+I will add in a `console.log()` that displays the current speed of the leader every time the new round begins. After I have found that the leader is speeding up appropriately - but not too much as to make the game too difficult to quickly - I will remove the console log.
 
 - **Result**
 
@@ -223,7 +221,13 @@ I used [Google Fonts](https://fonts.google.com/) to select the page's fonts. I u
 
 ## Bugs
 
-### Example Bug
+### Gaps Between Game Squares and Game Board Container 
+
+- **Bug**
+
+- **Fix**
+
+- **Verdict**
 
 ## Deployment
 

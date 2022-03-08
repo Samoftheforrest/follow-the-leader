@@ -9,13 +9,16 @@ let [easyBtn, mediumBtn, hardBtn] = difficultyBtns;
 // difficulty settings
 const difficulties = [{
     mode: 'Easy',
-    squares: 16
+    squares: 16,
+    startingSpeed: 1.5
 }, {
     mode: 'Medium',
-    squares: 49
+    squares: 49,
+    startingSpeed: 1.25
 }, {
     mode: 'Hard',
-    squares: 100
+    squares: 100,
+    startingSpeed: 1
 }];
 
 // functions

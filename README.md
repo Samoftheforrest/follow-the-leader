@@ -21,7 +21,6 @@ Trapped behind enemy lines, with a set of trecherous minefields ahead, how many 
 
 ### User Stories
 - As a user, I should be able to play the game on both mobile and desktop devices.
-- As a user, I would expect the game to have an appealing aesthetic that is appropriate for the game's concept.
 - As a user, I would like to be able to select the game's difficulty.
 - As a user, I would like the game's difficulty to increase slightly as the game progresses - to keep it engaging.
 - As a user, I would like to be able to check the rules at any time during the game.
@@ -63,7 +62,7 @@ Below, I will go explain the individual colours' uses more carefully.
 - `#1f242180`: As this colour is the darkest, I decided to use it mainly to outline, or as box shadow - note: the '80' on the end of this hex code sets the opacity of this colour to 50%.
 - `#216869`: This colour was used as the main background of the page, as I felt that the other colours would stand out well against it.
 - `#49a078`: I used this colour as the background for the following elements: the header, the game board container, and the social icons section.
-- `#9cc5a1`: I used this colour as the background for only the game board's squares. I thought it would be appropriate to give the squares a unique colour to pull the user's attention toward them. 
+- `#9cc5a1`: I initially used this colour as the background solely for the game board's squares. However, I decided that this colour wasn't aesthetically pleasing and decided to use this colour for the hover styling on the game's difficulty select buttons. 
 - `#dce1de`: I used this colour for all of the text, as it provided the most contrast with the background.
 
 #### Fonts
@@ -138,23 +137,11 @@ I used [Google Fonts](https://fonts.google.com/) to select the page's fonts. I u
 
 ## Testing
 
-### Test Name
+### Responsivity
 **As a user, I should be able to play the game on both mobile and desktop devices.**
-- **Plan**
+- **Plan** I would like the page's layout to rearrange, based on the size of the device it is viewed on, in order to present the information in the most effect way possible.
 
-- **Implementation**
-
-- **Test**
-
-- **Result**
-
-- **Verdict**
-
-### Test Name
-**As a user, I would expect the game to have an appealing aesthetic that is appropriate for the game's concept.**
-- **Plan**
-
-- **Implementation**
+- **Implementation** I will use a combination of CSS media queries and Bootstrap classes in order to change the page's layout dependent on the user's device's viewport. I will base the CSS media queries on the default Bootstrap breakpoints.
 
 - **Test**
 
@@ -162,17 +149,17 @@ I used [Google Fonts](https://fonts.google.com/) to select the page's fonts. I u
 
 - **Verdict**
 
-### Test Name
+### Select Difficulty
 **As a user, I would like to be able to select the game's difficulty.**
-- **Plan**
+- **Plan** When the game begins, the user will be presented with three buttons: easy, medium, and hard. Depending on which button the user clicks, a game board with a different amount of sqaures (based on the difficulty selected) will appear.
 
-- **Implementation**
+- **Implementation** I created three buttons (using `<a>` tags) within the site's HTML. Within the JavaScript, I created an object that contains information about the different difficulties. I then selected all of the buttons using `document.querySelectorAll()`, iterrated over them using a forEach loop and added a click event listener to each button which runs the startGame function with an arugment set to the button's index in the forEach loop (0 is easy, 1 is medium, 2 is hard). This argument then corresponds to the difficulty object and determines what displays onscreen.
 
-- **Test**
+- **Test** I will click on each of these buttons 5 times to see if the correct amount of squares are generated on the game board.
 
-- **Result**
+- **Result** On each of the clicks, for all of the buttons, the correct amount of squares were generated and displayed onscreen.
 
-- **Verdict**
+- **Verdict** This test has been successful.
 
 ### Test Name
 **As a user, I would like the game's difficulty to increase slightly as the game progresses - to keep it engaging.**

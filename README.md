@@ -183,45 +183,64 @@ I will add in a `console.log()` that displays the current speed of the leader ev
 
 - **Verdict**
 
-### Test Name
+### Movement Functionality
 **As a user, I would like to be able to play the game using either using a keyboard or mouse/mobile clicks.**
 - **Plan**
+When the game begins, the user should either be able to move using the keyboard's arrow keys or by clicking one of the squares next to the square that they are currently on.
 
 - **Implementation**
+For the keyboard functionality, there is an event listener attached to the body containing an if statement that determines which key has been pressed and to where the player should move (based on the `currentPosition`) variable. I have also added logic that adds a click event listener to the squares currently surrounding the player, which when clicked on, updates the player's current position to the square clicked on.
 
 - **Test**
+For the keyboard movement, I will move the player icon five squares in each direction using the keyboard to see if it moves appropriately for each key press. For the mouse, I will move the player icon from one side of the board to the other, three times, using only clicks (both using a mouse, and thumb clicks on a mobile device).
 
 - **Result**
 
 - **Verdict**
 
-### Test Name
+### Updating Score
 **As a user, I would like to be able to track my score as the game progresses.**
 - **Plan**
+As the player plays the game, for each successful round they complete the score should increment by 1.
 
 - **Implementation**
+Within the logic that checks if the player has successfully reached the final square and resets the game, I will include logic that increments the `score` variable, and set's the text content of the `<p>` with a class of 'score' to that value.
 
 - **Test**
+I will complete three rounds of the game myself, and check that the score increments appropriately. If it does, I will consider this test successful.
 
 - **Result**
 
 - **Verdict**
 
-### Test Name
+### Get in Touch
 **As a user, I would like to be able to contact the game's creator in order to provide feedback.**
 - **Plan**
+On the page, I would like to include links to my social media in the event that someone who play's the game would like to provide feedback.
 
 - **Implementation**
+On the bottom of the page, I have included three links to different social media accounts (Facebook, Instagram and Twitter) that when clicked, will open up the appropriate social media page in a new tab.
 
 - **Test**
+I will click each of these links 5 times, and check whether they take the user to the appropriate page.
 
 - **Result**
+Each of the clicks, to all three of the links, opened the appropriate page each time.
 
 - **Verdict**
+This test has been successful.
 
 ## Bugs
 
 ### Gaps Between Game Squares and Game Board Container 
+
+- **Bug**
+
+- **Fix**
+
+- **Verdict**
+
+### Game Board Obscured by Social Icons on Laptop Screens
 
 - **Bug**
 
@@ -235,6 +254,12 @@ I will add in a `console.log()` that displays the current speed of the leader ev
 - 
 
 ### Deployment
+
+This page is deployed using [GitHub Pages](https://pages.github.com/). Here I will explain how to set up a GitHub Page:
+1. Navigate to the main page of the project repo, and click the 'settings' tab.
+2. On the following page, select 'pages' from the sidebar.
+3. Make sure the branch is set to 'main' and the folder set to 'root' and click save to publish your GitHub page.
+4. Following this, any time you commit and push to your repo, your GitHub page will automatically update.
 
 ## Credits
 

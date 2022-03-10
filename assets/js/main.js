@@ -1,10 +1,9 @@
 // define elements
-let gameAreas = document.querySelectorAll('.game-area');
-let gameBoard = document.querySelector('.game-board');
-let gameSqaures = document.querySelector('.game-squares');
-let squares = document.querySelector('.squares');
-let difficultyBtns = document.querySelectorAll('.intro-btn');
-let [easyBtn, mediumBtn, hardBtn] = difficultyBtns;
+const gameAreas = document.querySelectorAll('.game-area');
+const gameBoard = document.querySelector('.game-board');
+const gameSqaures = document.querySelector('.game-squares');
+const squares = document.querySelector('.squares');
+const difficultyBtnsContainer = document.querySelector('#intro-btn-container');
 
 let playerPosition = 0;
 let leaderPosition = 0;
@@ -27,40 +26,88 @@ const difficulties = [{
 }];
 
 // functions
-const startGame = function(mode) {
-    gameAreas.forEach((area) => {
-        area.classList.add('d-none');
-    });
-    gameBoard.classList.remove('d-none');
-    generateSquares(mode);
-    leadersTurn(mode);
-}
-
 /**This function generates the amount of sqaures based off the mode's squares in the difficulties object and sets their width */
-const generateSquares = function(mode) {
-    for (let i = 0; i < difficulties[mode].squares; i++) {
-        let square = document.createElement('div');
+const generateSquares = difficulty => {
+    for (let i = 0; i < difficulty.squares; i++) {
+        const square = document.createElement('div');
         square.classList.add('square');
-        square.classList.add(i);
-        square.style.width = `${100 / (Math.sqrt(difficulties[mode].squares))}%`;
-        square.style.height = `${100 / (Math.sqrt(difficulties[mode].squares))}%`;
+        square.style.width = `${100 / (Math.sqrt(difficulty.squares))}%`;
+        square.style.height = `${100 / (Math.sqrt(difficulty.squares))}%`;
         squares.append(square);
     }
 };
 
-const leadersTurn = function(mode) {
+const generateLeader = difficulty => {
     let square = document.querySelectorAll('.square');
-    let randomNumber = Math.floor(Math.random() * 2);
+    for (let i of square) {
+        i.innerHTML = '';
+    }
     square[leaderPosition].innerHTML = leader;
+}
 
-    let leaderMoves = function() {
-        
+const updateLeaderPosition = (move) => {
+    leaderPosition += move;
+}
+
+const determineLeaderPosition = (difficulty) => {
+    console.log(leaderPosition);
+
+    if (leaderPosition % Math.sqrt(difficulty.sqaures) === (Math.sqrt(difficulty.sqaures) - 1)) {
+        updateLeaderPosition(10);
+        return;
+    } else if (leaderPosition >= (difficulty.squares - Math.sqrt(difficulty.sqaures))) {
+        updateLeaderPosition(1);
+        return;
+    }
+
+    let randomNumber = Math.floor(Math.random() * 2);
+
+    if (randomNumber === 0) {
+        updateLeaderPosition(1)
+        return;
+    } else {
+        updateLeaderPosition(10);
+        return;
     }
 }
 
-// event listeners
-difficultyBtns.forEach((btn, i) => {
-    btn.addEventListener('click', function() {
-        startGame(i);
+const leadersTurn = difficulty => {
+    if (leaderPosition === difficulty.squares) {
+        console.log('Horray!');
+    } else {
+        generateLeader(difficulty);
+        determineLeaderPosition(difficulty);
+        setTimeout(function() {
+            leadersTurn(difficulty);
+        }, 1500);
+    }
+}
+
+const startGame = difficulty => {
+    gameAreas.forEach((area) => {
+        area.classList.add('d-none');
     });
-})
+    gameBoard.classList.remove('d-none');
+    generateSquares(difficulty);
+    generateLeader(difficulty);
+    leadersTurn(difficulty);
+}
+
+const createDifficultyButtons = () => {
+    difficulties.forEach((difficulty, i) => {
+        const button = document.createElement('a');
+        button.setAttribute('href', '#');
+        button.setAttribute('class', 'intro-btn');
+        button.innerText = difficulty.mode;
+        button.addEventListener('click', function() {
+            startGame(difficulty);
+        });
+        difficultyBtnsContainer.appendChild(button);
+    })
+}
+
+createDifficultyButtons();
+
+let leaderMoves = function() {
+        
+}

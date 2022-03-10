@@ -3,7 +3,8 @@
 
 /* variables */
 :root {
-    --dark-jungle-green: #1f242180;
+    --dark-jungle-green-opaque: #1f242180;
+    --dark-jungle-green: #1f2421;
     --skobeloff: #216869;
     --shiny-shamrock: #49a078;
     --eton-blue: #9cc5a1;
@@ -109,7 +110,7 @@ header {
     height: 65vh;
     padding: 15px 0;
     border-radius: 4px;
-    border: 1px solid var(--dark-jungle-green);
+    border: 1px solid var(--dark-jungle-green-opaque);
 }
 
 /* intro screen */
@@ -211,7 +212,7 @@ footer {
     border-radius: 4px;
     padding: 1.2rem 0;
     margin-top: 2rem;
-    border: 1px solid var(--dark-jungle-green);
+    border: 1px solid var(--dark-jungle-green-opaque);
 }
 
 .social-icons a {
@@ -272,5 +273,12 @@ footer {
 
     .score {
         font-size: 6rem;
+    }
+
+    footer {
+        position: relative;
+        left: auto;
+        transform: translate(0);
+        margin-top: 6.5rem;
     }
 }

@@ -58,7 +58,7 @@ Below, I will go explain the individual colours' uses more carefully.
 
 ![Colour palette](/docs/colour-palette.png)
 
-- `#1f242180`: As this colour is the darkest, I decided to use it mainly to outline, or as box shadow - note: the '80' on the end of this hex code sets the opacity of this colour to 50%.
+- `#1f2421`: As this colour is the darkest, I decided to use it mainly to outline, or as box shadow - note: there is another variant of this colour, with '80' added to the end. This sets the opacity of this colour to 50%.
 - `#216869`: This colour was used as the main background of the page, as I felt that the other colours would stand out well against it.
 - `#49a078`: I used this colour as the background for the following elements: the header, the game board container, and the social icons section.
 - `#9cc5a1`: I initially used this colour as the background solely for the game board's squares. However, I decided that this colour wasn't aesthetically pleasing and decided to use this colour for the hover styling on the game's difficulty select buttons. 

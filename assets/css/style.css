@@ -30,6 +30,15 @@ body {
     color: var(--platinum);
 }
 
+/* general game styles */
+
+.leader {
+    height: 50%;
+    width: 50%;
+    border-radius: 50%;
+    background: var(--platinum); 
+}
+
 /* header */
 header {
     padding: 1rem 5px 0 5px;
@@ -162,6 +171,9 @@ header {
 .square {
     border: 2px solid var(--platinum);
     display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .message-wrap {

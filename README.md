@@ -235,18 +235,51 @@ This test has been successful.
 ### Gaps Between Game Squares and Game Board Container 
 
 - **Bug**
+The squares of the game board are given a width and height in `rem`. This causes some of the squares to wrap onto the next line on easy and medium difficulty modes.
 
 - **Fix**
+My original fix for this was to change the width and height of the squares by adding a class dependent on the difficulty selected. However, as I wanted to maintain the possiblilty of including additional difficulties in later iterations of the game, I decided to add logic that calculates the width and height of the squares based on the sqaure root (using `Math.sqrt()`) of the squares generated - i.e. if a 100 squares were generated, the width and height of each square would be 10% of the board.
 
 - **Verdict**
+I have tested this fix on: easy mode, with 16 squares; medium mode, with 49 squares; and hard mode, with 100 squares. All of the game board squares have rendered appropriately. I have determined that this fix has been successful.
 
 ### Game Board Obscured by Social Icons on Laptop Screens
 
 - **Bug**
+Because the social icons section has been absolutely positioned to the bottom of the screen, and the game board had a `min-height` set on it, this would cause overlapping between the two sections when the viewport height was less than the game board's `min-height` and the social icon's height together.
 
 - **Fix**
+To fix this, I added a media query that replaces the absolute positioning of the social icons section with `position: static` on certain screen sizes.
 
 - **Verdict**
+I have tested this fix on two mobile devices (Samsung Galaxy S8 and iPhone SE), two tablet devices (iPad Mini and iPad Air), a laptop and a desktop and the sections are not overlapping. I have determined that this fix has been successful.
+
+### Leader Moves Off the Game Board
+
+- **Bug**
+Because the leader's movement is dependent on on the `randomNumber` variable, the leader will sometimes move either off the bottom or the right of the screen.
+
+- **Fix**
+I implemented the following logic within the `determinePosition` function:
+
+~~~
+// this determines if the leader has reached the right edge of the board
+if (leaderPosition % Math.sqrt(difficulty.squares) % Math.sqrt(difficulty.squares) === (Math.sqrt(difficulty.squares) - 1)) {
+    console.log('right edge reached')
+    updateLeaderPosition(Math.sqrt(difficulty.squares));
+    return;
+// this determines if the leader has reached the final row of the board
+} else if (leaderPosition >= ((difficulty.squares) - (Math.sqrt(difficulty.squares)))) {
+    console.log('bottom edge reached');
+    updateLeaderPosition(1);
+    return;
+}
+~~~
+
+This logic forces the leader to only move down if it has reached the right edge of the board, or only right if it has reached the bottom row of the board. This is all based on the amount of squares generated, which is determined by the difficulties object.
+
+- **Verdict**
+I have ran the game five times on each difficulty, and the leader has successfully reached the final square each time and the appropriate console logs have fired at the correct time. I have determined that this fix has been successful.
 
 ## Deployment
 

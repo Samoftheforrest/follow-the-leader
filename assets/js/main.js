@@ -43,7 +43,7 @@ const generateLeader = difficulty => {
         i.innerHTML = '';
     }
     square[leaderPosition].innerHTML = leader;
-    // square[leaderPosition].classList.add('path');
+    square[leaderPosition].setAttribute('data-path', 'true');
 }
 
 const updateLeaderPosition = (move) => {

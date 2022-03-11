@@ -275,7 +275,6 @@ if (leaderPosition % Math.sqrt(difficulty.squares) % Math.sqrt(difficulty.square
     return;
 }
 ~~~
-
 This logic forces the leader to only move down if it has reached the right edge of the board, or only right if it has reached the bottom row of the board. This is all based on the amount of squares generated, which is determined by the difficulties object.
 
 - **Verdict**

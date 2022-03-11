@@ -43,6 +43,7 @@ const generateLeader = difficulty => {
         i.innerHTML = '';
     }
     square[leaderPosition].innerHTML = leader;
+    // square[leaderPosition].classList.add('path');
 }
 
 const updateLeaderPosition = (move) => {
@@ -50,12 +51,13 @@ const updateLeaderPosition = (move) => {
 }
 
 const determineLeaderPosition = (difficulty) => {
-    console.log(leaderPosition);
 
-    if (leaderPosition % Math.sqrt(difficulty.sqaures) === (Math.sqrt(difficulty.sqaures) - 1)) {
-        updateLeaderPosition(10);
+    if (leaderPosition % Math.sqrt(difficulty.squares) % Math.sqrt(difficulty.squares) === (Math.sqrt(difficulty.squares) - 1)) {
+        console.log('right edge reached')
+        updateLeaderPosition(Math.sqrt(difficulty.squares));
         return;
-    } else if (leaderPosition >= (difficulty.squares - Math.sqrt(difficulty.sqaures))) {
+    } else if (leaderPosition >= ((difficulty.squares) - (Math.sqrt(difficulty.squares)))) {
+        console.log('bottom edge reached');
         updateLeaderPosition(1);
         return;
     }
@@ -66,20 +68,22 @@ const determineLeaderPosition = (difficulty) => {
         updateLeaderPosition(1)
         return;
     } else {
-        updateLeaderPosition(10);
+        updateLeaderPosition(Math.sqrt(difficulty.squares));
         return;
     }
 }
 
 const leadersTurn = difficulty => {
-    if (leaderPosition === difficulty.squares) {
-        console.log('Horray!');
+    if (leaderPosition === (difficulty.squares) - 1) {
+        generateLeader(difficulty);
+        console.log('Maze complete');
+        return;
     } else {
         generateLeader(difficulty);
         determineLeaderPosition(difficulty);
         setTimeout(function() {
             leadersTurn(difficulty);
-        }, 1500);
+        }, (difficulty.startingSpeed) * 1000);
     }
 }
 

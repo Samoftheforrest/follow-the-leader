@@ -8,7 +8,8 @@ const difficultyBtnsContainer = document.querySelector('#intro-btn-container');
 let playerPosition = 0;
 let leaderPosition = 0;
 let leader = '<div class="leader"></div>';
-let player = '<div class="player"></div>'
+let player = '<div class="player"></div>';
+let score = 0;
 
 // difficulty settings
 const difficulties = [{
@@ -37,51 +38,101 @@ const generateSquares = difficulty => {
     }
 };
 
-/** creates the leader icon and adds data-path attribute to each square that it travels across */
-const generateCharacter = character => {
-    let characterPosition = character === 'leader' ? leaderPosition : playerPosition;
-    let square = document.querySelectorAll('.square');
-    
+/** removes any characters from all squares on the board */
+const clearSquares = () => {
+    const square = document.querySelectorAll('.square');
+
     for (let i of square) {
         i.innerHTML = '';
     }
-    square[characterPosition].innerHTML = leader;
+}
 
-    if (characterPosition) {
-        square[characterPosition].setAttribute('data-path', '');
+/** creates the leader icon and adds data-path attribute to each square that it travels across */
+const generateCharacter = position => {
+    const square = document.querySelectorAll('.square');
+
+    clearSquares();
+
+    if (position === 'leader') {
+        square[leaderPosition].innerHTML = leader;
+        square[leaderPosition].setAttribute('data-path', '');
+    } else {
+        square[playerPosition].innerHTML = player;
     }
 }
 
 /** updates the position of the leader */
-const updateLeaderPosition = (move) => {
-    leaderPosition += move;
+const updateCharacterPosition = (position, move) => {
+    if (position === 'leader') {
+        leaderPosition += move;
+    } else {
+        playerPosition += move;
+        generateCharacter('player');
+    }
 }
 
 /** determines if the leader is at the edge of the board, and then determines where the leader should move to */
 const determineLeaderPosition = (difficulty) => {
 
-    if (leaderPosition % Math.sqrt(difficulty.squares) % Math.sqrt(difficulty.squares) === (Math.sqrt(difficulty.squares) - 1)) {
-        updateLeaderPosition(Math.sqrt(difficulty.squares));
+    if (leaderPosition % Math.sqrt(difficulty.squares) === (Math.sqrt(difficulty.squares) - 1)) {
+        updateCharacterPosition('leader', Math.sqrt(difficulty.squares));
         return;
-    } else if (leaderPosition >= ((difficulty.squares) - (Math.sqrt(difficulty.squares)))) {
-        updateLeaderPosition(1);
+    } else if (leaderPosition >= (difficulty.squares - (Math.sqrt(difficulty.squares)))) {
+        updateCharacterPosition('leader', 1);
         return;
     }
 
     let randomNumber = Math.floor(Math.random() * 2);
 
     if (randomNumber === 0) {
-        updateLeaderPosition(1)
+        updateCharacterPosition('leader', 1)
         return;
     } else {
-        updateLeaderPosition(Math.sqrt(difficulty.squares));
+        updateCharacterPosition('leader', Math.sqrt(difficulty.squares));
         return;
     }
 }
 
+/** adds event listeners (both key and click) to allow the player to move */
+const playerMoves = function(difficulty) {
+
+    // keyboard movement
+    document.addEventListener('keydown', function(e) {
+        if (e.key === "ArrowRight") {
+            if (playerPosition % Math.sqrt(difficulty.squares) === (Math.sqrt(difficulty.squares) - 1)) {
+              return;
+            };
+            updateCharacterPosition('player', 1);
+          } else if (e.key === "ArrowLeft") {
+            if (playerPosition % Math.sqrt(difficulty.squares) === 0) {
+              return;
+            };
+            updateCharacterPosition('player', -1);
+          } else if (e.key === "ArrowDown") {
+            if (playerPosition >= (difficulty.squares - (Math.sqrt(difficulty.squares)))) {
+              return;
+            };
+            updateCharacterPosition('player', Math.sqrt(difficulty.squares));
+          } else if (e.key === "ArrowUp") {
+            if (playerPosition < Math.sqrt(difficulty.squares)) {
+              return;
+            };
+            updateCharacterPosition('player', -`${Math.sqrt(difficulty.squares)}`);
+          } else {
+            // stops other keys making character disappear
+            updateCharacterPosition('player', 0);
+          }
+    });
+
+    // @TODO: click movement
+};
+
 /** begins the player's turn */
 const playersTurn = (difficulty) => {
     console.log('players turn begins');
+    clearSquares();
+    generateCharacter('player');
+    playerMoves(difficulty);
 }
 
 /** begins the leader's turn and ends it when the leader reaches the final square */

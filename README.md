@@ -294,5 +294,7 @@ This page is deployed using [GitHub Pages](https://pages.github.com/). Here I wi
 4. Following this, any time you commit and push to your repo, your GitHub page will automatically update.
 
 ## Credits
+- [This StackOverflow thread](https://stackoverflow.com/questions/10000083/javascript-event-handler-with-parameters) helped me to understand passing parameters to event listeners, which I implemented myself within the game's `playerMoves` function.
+
 
 ### General Thanks

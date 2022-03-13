@@ -4,12 +4,13 @@ const gameBoard = document.querySelector('.game-board');
 const gameSqaures = document.querySelector('.game-squares');
 const squares = document.querySelector('.squares');
 const difficultyBtnsContainer = document.querySelector('#intro-btn-container');
+const score = document.querySelector('.score');
 
 let playerPosition = 0;
 let leaderPosition = 0;
 let leader = '<div class="leader"></div>';
 let player = '<div class="player"></div>';
-let score = 0;
+let currentScore = 0;
 
 // difficulty settings
 const difficulties = [{
@@ -38,6 +39,11 @@ const generateSquares = difficulty => {
     }
 };
 
+const setScore = () => {
+    score.textContent = currentScore;
+};
+setScore();
+
 /** removes any characters from all squares on the board */
 const clearSquares = () => {
     const square = document.querySelectorAll('.square');
@@ -61,13 +67,33 @@ const generateCharacter = position => {
     }
 }
 
+const playerWins = difficulty => {
+    console.log('player successful');
+    playerMovement(difficulty, false);
+    setTimeout(clearSquares, (difficulty.startingSpeed * 1000));
+}
+
+const playerLoses = difficulty => {
+    console.log('Oh no! You\'ve stepped off the path!');
+}
+
+const winOrLose = (difficulty) => {
+    const square = document.querySelectorAll('.square');
+    if (playerPosition === (difficulty.squares) - 1) {
+        playerWins(difficulty);
+    } else if (!square[playerPosition].hasAttribute('data-path')) {
+        playerLoses(difficulty);
+    }
+}
+
 /** updates the position of the leader */
-const updateCharacterPosition = (position, move) => {
+const updateCharacterPosition = (position, move, difficulty) => {
     if (position === 'leader') {
         leaderPosition += move;
     } else {
         playerPosition += move;
         generateCharacter('player');
+        winOrLose(difficulty);
     }
 }
 
@@ -94,37 +120,36 @@ const determineLeaderPosition = (difficulty) => {
 }
 
 /** adds event listeners (both key and click) to allow the player to move */
-const playerMoves = function(difficulty) {
+const playerMovement = function(difficulty, type = true) {
 
-    // keyboard movement
-    document.addEventListener('keydown', function(e) {
+    function keyboardMovement(e) {
         if (e.key === "ArrowRight") {
             if (playerPosition % Math.sqrt(difficulty.squares) === (Math.sqrt(difficulty.squares) - 1)) {
-              return;
+                return;
             };
-            updateCharacterPosition('player', 1);
-          } else if (e.key === "ArrowLeft") {
+            updateCharacterPosition('player', 1, difficulty);
+            } else if (e.key === "ArrowLeft") {
             if (playerPosition % Math.sqrt(difficulty.squares) === 0) {
-              return;
+                return;
             };
-            updateCharacterPosition('player', -1);
-          } else if (e.key === "ArrowDown") {
+            updateCharacterPosition('player', -1, difficulty);
+            } else if (e.key === "ArrowDown") {
             if (playerPosition >= (difficulty.squares - (Math.sqrt(difficulty.squares)))) {
-              return;
+                return;
             };
-            updateCharacterPosition('player', Math.sqrt(difficulty.squares));
-          } else if (e.key === "ArrowUp") {
+            updateCharacterPosition('player', Math.sqrt(difficulty.squares), difficulty);
+            } else if (e.key === "ArrowUp") {
             if (playerPosition < Math.sqrt(difficulty.squares)) {
-              return;
+                return;
             };
-            updateCharacterPosition('player', -`${Math.sqrt(difficulty.squares)}`);
-          } else {
+            updateCharacterPosition('player', -`${Math.sqrt(difficulty.squares)}`, difficulty);
+            } else {
             // stops other keys making character disappear
             updateCharacterPosition('player', 0);
-          }
-    });
+            }
+    }
 
-    // @TODO: click movement
+    // event listener was firing multiple times - use this SO answer to try new solutions (https://stackoverflow.com/questions/26146108/addeventlistener-firing-multiple-times-for-the-same-handle-when-passing-in-argum);
 };
 
 /** begins the player's turn */
@@ -132,7 +157,7 @@ const playersTurn = (difficulty) => {
     console.log('players turn begins');
     clearSquares();
     generateCharacter('player');
-    playerMoves(difficulty);
+    playerMovement(difficulty);
 }
 
 /** begins the leader's turn and ends it when the leader reaches the final square */

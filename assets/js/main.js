@@ -38,13 +38,18 @@ const generateSquares = difficulty => {
 };
 
 /** creates the leader icon and adds data-path attribute to each square that it travels across */
-const generateLeader = difficulty => {
+const generateCharacter = character => {
+    let characterPosition = character === 'leader' ? leaderPosition : playerPosition;
     let square = document.querySelectorAll('.square');
+    
     for (let i of square) {
         i.innerHTML = '';
     }
-    square[leaderPosition].innerHTML = leader;
-    square[leaderPosition].setAttribute('data-path', 'true');
+    square[characterPosition].innerHTML = leader;
+
+    if (characterPosition) {
+        square[characterPosition].setAttribute('data-path', '');
+    }
 }
 
 /** updates the position of the leader */
@@ -82,13 +87,13 @@ const playersTurn = (difficulty) => {
 /** begins the leader's turn and ends it when the leader reaches the final square */
 const leadersTurn = difficulty => {
     if (leaderPosition === (difficulty.squares) - 1) {
-        generateLeader(difficulty);
+        generateCharacter('leader');
         setTimeout(function() {
             playersTurn(difficulty);
-        }, 1000);
+        }, (difficulty.startingSpeed) * 1000);
         return;
     } else {
-        generateLeader(difficulty);
+        generateCharacter('leader');
         determineLeaderPosition(difficulty);
         setTimeout(function() {
             leadersTurn(difficulty);
@@ -103,7 +108,7 @@ const startGame = difficulty => {
     });
     gameBoard.classList.remove('d-none');
     generateSquares(difficulty);
-    generateLeader(difficulty);
+    generateCharacter(difficulty);
     leadersTurn(difficulty);
 }
 

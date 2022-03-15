@@ -120,34 +120,38 @@ const determineLeaderPosition = (difficulty) => {
 }
 
 /** adds event listeners (both key and click) to allow the player to move */
-const playerMovement = function(difficulty, type = true) {
+const playerMovement = (difficulty, type = true) => {
 
-    function keyboardMovement(e) {
-        if (e.key === "ArrowRight") {
-            if (playerPosition % Math.sqrt(difficulty.squares) === (Math.sqrt(difficulty.squares) - 1)) {
-                return;
-            };
-            updateCharacterPosition('player', 1, difficulty);
+    const keyboardMovement = function (e) {
+        if (playerPosition !== (difficulty.squares - 1)) {
+            if (e.key === "ArrowRight") {
+                if (playerPosition % Math.sqrt(difficulty.squares) === (Math.sqrt(difficulty.squares) - 1)) {
+                    return;
+                };
+                updateCharacterPosition('player', 1, difficulty);
             } else if (e.key === "ArrowLeft") {
-            if (playerPosition % Math.sqrt(difficulty.squares) === 0) {
-                return;
-            };
-            updateCharacterPosition('player', -1, difficulty);
+                if (playerPosition % Math.sqrt(difficulty.squares) === 0) {
+                    return;
+                };
+                updateCharacterPosition('player', -1, difficulty);
             } else if (e.key === "ArrowDown") {
-            if (playerPosition >= (difficulty.squares - (Math.sqrt(difficulty.squares)))) {
-                return;
-            };
-            updateCharacterPosition('player', Math.sqrt(difficulty.squares), difficulty);
+                if (playerPosition >= (difficulty.squares - (Math.sqrt(difficulty.squares)))) {
+                    return;
+                };
+                updateCharacterPosition('player', Math.sqrt(difficulty.squares), difficulty);
             } else if (e.key === "ArrowUp") {
-            if (playerPosition < Math.sqrt(difficulty.squares)) {
-                return;
-            };
-            updateCharacterPosition('player', -`${Math.sqrt(difficulty.squares)}`, difficulty);
+                if (playerPosition < Math.sqrt(difficulty.squares)) {
+                    return;
+                };
+                updateCharacterPosition('player', -`${Math.sqrt(difficulty.squares)}`, difficulty);
             } else {
-            // stops other keys making character disappear
-            updateCharacterPosition('player', 0);
+                // stops other keys making character disappear
+                updateCharacterPosition('player', 0);
             }
+        }
     }
+
+    document.body.addEventListener('keydown', keyboardMovement);
 
     // event listener was firing multiple times - use this SO answer to try new solutions (https://stackoverflow.com/questions/26146108/addeventlistener-firing-multiple-times-for-the-same-handle-when-passing-in-argum);
 };

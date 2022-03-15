@@ -2,6 +2,7 @@
 const gameAreas = document.querySelectorAll('.game-area');
 const gameBoard = document.querySelector('.game-board');
 const gameSqaures = document.querySelector('.game-squares');
+const loseScreen = document.querySelector('.lose-screen');
 const squares = document.querySelector('.squares');
 const difficultyBtnsContainer = document.querySelector('#intro-btn-container');
 const score = document.querySelector('.score');
@@ -70,11 +71,20 @@ const generateCharacter = position => {
 const playerWins = difficulty => {
     console.log('player successful');
     playerMovement(difficulty, false);
-    setTimeout(clearSquares, (difficulty.startingSpeed * 1000));
+    // setTimeout(clearSquares, (difficulty.startingSpeed * 1000));
+    setTimeout(function() {
+        clearSquares();
+        currentScore++;
+        setScore();
+    }, (difficulty.startingSpeed * 1000));
 }
 
 const playerLoses = difficulty => {
     console.log('Oh no! You\'ve stepped off the path!');
+    gameAreas.forEach(area => {
+        area.classList.add('d-none');
+    });
+    loseScreen.classList.remove('d-none');
 }
 
 const winOrLose = (difficulty) => {

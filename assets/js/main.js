@@ -81,10 +81,10 @@ const playerWins = difficulty => {
 
 const playerLoses = difficulty => {
     console.log('Oh no! You\'ve stepped off the path!');
-    gameAreas.forEach(area => {
-        area.classList.add('d-none');
-    });
-    loseScreen.classList.remove('d-none');
+    // gameAreas.forEach(area => {
+    //     area.classList.add('d-none');
+    // });
+    // loseScreen.classList.remove('d-none');
 }
 
 const winOrLose = (difficulty) => {
@@ -160,6 +160,29 @@ const playerMovement = (difficulty, type = true) => {
             }
         }
     }
+
+    if (playerPosition !== (difficulty.squares - 1)) {
+        const squares = document.querySelectorAll('.square');
+        const addClickListeners = function() {
+            squares[playerPosition + 1].addEventListener('click', mouseMovement);
+            squares[playerPosition + Math.sqrt(difficulty.squares)].addEventListener('click', mouseMovement);
+        };
+
+        const mouseMovement = function(e) {
+            if (e.target === squares[playerPosition + 1]) {
+                updateCharacterPosition('player', 1, difficulty);
+            } else {
+                updateCharacterPosition('player', Math.sqrt(difficulty.squares), difficulty);
+            }
+            squares.forEach(square => {
+                square.removeEventListener('click', mouseMovement);
+            });
+            addClickListeners();
+        }
+
+        squares[playerPosition + 1].addEventListener('click', mouseMovement);
+        squares[playerPosition + Math.sqrt(difficulty.squares)].addEventListener('click', mouseMovement);
+    }    
 
     document.body.addEventListener('keydown', keyboardMovement);
 

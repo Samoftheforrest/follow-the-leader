@@ -280,6 +280,17 @@ This logic forces the leader to only move down if it has reached the right edge 
 - **Verdict**
 I have ran the game five times on each difficulty, and the leader has successfully reached the final square each time and the appropriate console logs have fired at the correct time. I have determined that this fix has been successful.
 
+### Player still able to move after getting to the final square
+
+- **Bug**
+When the player reaches the final square on the game board, they are still able to move before the round resets.
+
+- **Fix**
+Within the function used by the keyboard and mouse event listeners, I added an if statement that only allows the movement logic to be run if the player's position is not the final square.
+
+- **Verdict**
+I have successfully completed 3 trial runs (1 of each difficulty) of the game. Each time, when I reached the final square, I was no longer able to move the player icon. I have determined that this fix was successful.
+
 ## Deployment
 
 ### Local Development

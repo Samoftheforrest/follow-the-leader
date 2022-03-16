@@ -2,16 +2,20 @@
 const gameAreas = document.querySelectorAll('.game-area');
 const gameBoard = document.querySelector('.game-board');
 const gameSqaures = document.querySelector('.game-squares');
+const introScreen = document.querySelector('.intro-screen');
 const loseScreen = document.querySelector('.lose-screen');
 const squares = document.querySelector('.squares');
 const difficultyBtnsContainer = document.querySelector('#intro-btn-container');
 const score = document.querySelector('.score');
+const resetBtn = document.querySelector('.reset-btn');
 
 let playerPosition = 0;
 let leaderPosition = 0;
 let leader = '<div class="leader"></div>';
 let player = '<div class="player"></div>';
 let currentScore = 0;
+let keyListenerActive = false;
+let movementEnabled = false;
 
 // difficulty settings
 const difficulties = [{
@@ -68,12 +72,32 @@ const generateCharacter = position => {
     }
 }
 
+const startNewRound = function(difficulty) {
+    leaderPosition = 0;
+    playerPosition = 0;
+    movementEnabled = false;
+    const difficultyBtns = document.querySelectorAll('.intro-btn');
+    const squares = document.querySelectorAll('.square');
+    difficultyBtns.forEach(btn => {
+        btn.remove();
+    })
+    squares.forEach(square => {
+        square.remove();
+    })
+    gameAreas.forEach((area) => {
+        area.classList.add('d-none');
+    });
+    // gameBoard.classList.remove('d-none');
+    startGame(difficulty);
+}
+
 const playerWins = difficulty => {
     console.log('player successful');
     setTimeout(function() {
         clearSquares();
         currentScore++;
         setScore();
+        startNewRound(difficulty);
     }, (difficulty.startingSpeed * 1000));
 }
 
@@ -108,7 +132,9 @@ const updateCharacterPosition = (position, move, difficulty) => {
 /** determines if the leader is at the edge of the board, and then determines where the leader should move to */
 const determineLeaderPosition = (difficulty) => {
 
-    if (leaderPosition % Math.sqrt(difficulty.squares) === (Math.sqrt(difficulty.squares) - 1)) {
+    movementEnabled = false;
+
+    if (leaderPosition % Math.sqrt(difficulty.squares) === (Math.sqrt(difficulty.squares) - 1) && movementEnabled === true) {
         updateCharacterPosition('leader', Math.sqrt(difficulty.squares));
         return;
     } else if (leaderPosition >= (difficulty.squares - (Math.sqrt(difficulty.squares)))) {
@@ -128,10 +154,13 @@ const determineLeaderPosition = (difficulty) => {
 }
 
 /** adds event listeners (both key and click) to allow the player to move */
-const playerMovement = (difficulty, type = true) => {
+const playerMovement = difficulty => {
 
     const keyboardMovement = function (e) {
         if (playerPosition !== (difficulty.squares - 1)) {
+            if (movementEnabled === false) {
+                return;
+            }
             if (e.key === "ArrowRight") {
                 if (playerPosition % Math.sqrt(difficulty.squares) === (Math.sqrt(difficulty.squares) - 1)) {
                     return;
@@ -198,7 +227,10 @@ const playerMovement = (difficulty, type = true) => {
         squares[playerPosition + Math.sqrt(difficulty.squares)].addEventListener('click', mouseMovement);
     }
 
-    document.body.addEventListener('keydown', keyboardMovement);
+    if (keyListenerActive === false) {
+        document.body.addEventListener('keydown', keyboardMovement);
+        keyListenerActive = true;
+    }
 };
 
 /** begins the player's turn */
@@ -206,11 +238,13 @@ const playersTurn = (difficulty) => {
     console.log('players turn begins');
     clearSquares();
     generateCharacter('player');
+    movementEnabled = true;
     playerMovement(difficulty);
 }
 
 /** begins the leader's turn and ends it when the leader reaches the final square */
 const leadersTurn = difficulty => {
+
     if (leaderPosition === (difficulty.squares) - 1) {
         generateCharacter('leader');
         setTimeout(function() {
@@ -252,3 +286,26 @@ const createDifficultyButtons = () => {
 }
 
 createDifficultyButtons();
+
+const resetGame = function() {
+    leaderPosition = 0;
+    playerPosition = 0;
+    currentScore = 0;
+    setScore();
+    const difficultyBtns = document.querySelectorAll('.intro-btn');
+    const squares = document.querySelectorAll('.square');
+    difficultyBtns.forEach(btn => {
+        btn.remove();
+    })
+    squares.forEach(square => {
+        square.remove();
+    })
+    gameAreas.forEach((area) => {
+        area.classList.add('d-none');
+    });
+    introScreen.classList.remove('d-none');
+    createDifficultyButtons();
+}
+
+// event listener
+resetBtn.addEventListener('click', resetGame);

@@ -70,8 +70,6 @@ const generateCharacter = position => {
 
 const playerWins = difficulty => {
     console.log('player successful');
-    playerMovement(difficulty, false);
-    // setTimeout(clearSquares, (difficulty.startingSpeed * 1000));
     setTimeout(function() {
         clearSquares();
         currentScore++;
@@ -161,12 +159,28 @@ const playerMovement = (difficulty, type = true) => {
         }
     }
 
-    if (playerPosition !== (difficulty.squares - 1)) {
         const squares = document.querySelectorAll('.square');
+        if (playerPosition < (difficulty.squares - 1)) {
         const addClickListeners = function() {
-            squares[playerPosition + 1].addEventListener('click', mouseMovement);
-            squares[playerPosition + Math.sqrt(difficulty.squares)].addEventListener('click', mouseMovement);
-        };
+            if (playerPosition >= (difficulty.squares - (Math.sqrt(difficulty.squares)))) {
+                console.log('bottom reached');
+                squares.forEach(square => {
+                    square.removeEventListener('click', mouseMovement);
+                })
+                squares[playerPosition + 1].addEventListener('click', mouseMovement);
+                return;
+            } else if (playerPosition % Math.sqrt(difficulty.squares) === (Math.sqrt(difficulty.squares) - 1)) {
+                console.log('right reached');
+                squares.forEach(square => {
+                    square.removeEventListener('click', mouseMovement);
+                })
+                squares[playerPosition + Math.sqrt(difficulty.squares)].addEventListener('click', mouseMovement);
+                return;
+            } else {
+                squares[playerPosition + 1].addEventListener('click', mouseMovement);
+                squares[playerPosition + Math.sqrt(difficulty.squares)].addEventListener('click', mouseMovement);
+            }
+        }
 
         const mouseMovement = function(e) {
             if (e.target === squares[playerPosition + 1]) {
@@ -182,11 +196,9 @@ const playerMovement = (difficulty, type = true) => {
 
         squares[playerPosition + 1].addEventListener('click', mouseMovement);
         squares[playerPosition + Math.sqrt(difficulty.squares)].addEventListener('click', mouseMovement);
-    }    
+    }
 
     document.body.addEventListener('keydown', keyboardMovement);
-
-    // event listener was firing multiple times - use this SO answer to try new solutions (https://stackoverflow.com/questions/26146108/addeventlistener-firing-multiple-times-for-the-same-handle-when-passing-in-argum);
 };
 
 /** begins the player's turn */

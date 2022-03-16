@@ -134,7 +134,7 @@ const determineLeaderPosition = (difficulty) => {
 
     movementEnabled = false;
 
-    if (leaderPosition % Math.sqrt(difficulty.squares) === (Math.sqrt(difficulty.squares) - 1) && movementEnabled === true) {
+    if (leaderPosition % Math.sqrt(difficulty.squares) === (Math.sqrt(difficulty.squares) - 1)) {
         updateCharacterPosition('leader', Math.sqrt(difficulty.squares));
         return;
     } else if (leaderPosition >= (difficulty.squares - (Math.sqrt(difficulty.squares)))) {

@@ -191,6 +191,12 @@ const playerMovement = difficulty => {
         const squares = document.querySelectorAll('.square');
         if (playerPosition < (difficulty.squares - 1)) {
         const addClickListeners = function() {
+            if (playerPosition === (difficulty.squares - 1)) {
+                squares.forEach(square => {
+                    square.removeEventListener('click', mouseMovement);
+                })
+                return;
+            }
             if (playerPosition >= (difficulty.squares - (Math.sqrt(difficulty.squares)))) {
                 console.log('bottom reached');
                 squares.forEach(square => {

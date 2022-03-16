@@ -291,6 +291,17 @@ Within the function used by the keyboard and mouse event listeners, I added an i
 - **Verdict**
 I have successfully completed 3 trial runs (1 of each difficulty) of the game. Each time, when I reached the final square, I was no longer able to move the player icon. I have determined that this fix was successful.
 
+### Player Able to Move During Leader's Turn
+
+- **Bug**
+After the leader's first turn, when the `keydown` event listener is added to the document, the player is able to move, which disrupts the leader's turn.
+
+- **Fix**
+Initially, I attempted to remove the `keydown` event listener at the end of the player's turn (when the player reaches the final square) - this was ineffective as a new event listener was added every round. To combat this, I added the `movementEnabled` variable, and included it within the player's movement logic - only allowing the player to move when the variable is set to true. During the leader's turn, the variable is set to false.
+
+- **Verdict**
+I played 5 rounds of the game, and during each of the leader's turns I continually pressed all of the buttons. The player was unable to move during the leader's turn. I have determined that this fix has been successful.
+
 ## Deployment
 
 ### Local Development

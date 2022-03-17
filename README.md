@@ -148,8 +148,10 @@ I will use a combination of CSS media queries and Bootstrap classes in order to 
 I will use the [Chrome Developer Tools](https://developer.chrome.com/docs/devtools/) to resize the browser to emulate three mobile devices (Galaxy S20, iPhone SE and an iPad mini) and to ensure that the design is appropriate for each screen size.
 
 - **Result**
+The layout appeared as expected on all of the listed device sizes.
 
 - **Verdict**
+This test has been successful.
 
 ### Select Difficulty
 **As a user, I would like to be able to select the game's difficulty.**
@@ -174,14 +176,16 @@ This test has been successful.
 Every time the user reaches the final square of the game board, the game will begin again, with the leader moving through the game board slightly faster than the previous game.
 
 - **Implementation**
-When the game begins, the leader's speed is determined by the `startingSpeed` key of the 'difficulties' object, which varies depending on the difficulty selected. As part of the logic for the player successfully completing a round of the game - by reaching the final square - I will include logic that slightly decrements the leader's speed every time a new round begins.
+When the game begins, the leader's speed is determined by the `startingSpeed` key of the 'difficulties' object, which varies depending on the difficulty selected. As part of the logic for beginning a new round - in the `startNewRound` function - I multiplied the starting speed by 0.95.
 
 - **Test**
-I will add in a `console.log()` that displays the current speed of the leader every time the new round begins. After I have found that the leader is speeding up appropriately - but not too much as to make the game too difficult to quickly - I will remove the console log.
+I will add in a `console.log()` that displays the current speed of the leader every time the new round begins. I will complete three rounds on each difficulty to check if the number is getting smaller - but not too small - each round.
 
 - **Result**
+In every round of the game, the `console.log()` displayed a slightly lower number each time.
 
 - **Verdict**
+This test has been successful.
 
 ### Movement Functionality
 **As a user, I would like to be able to play the game using either using a keyboard or mouse/mobile clicks.**
@@ -192,11 +196,13 @@ When the game begins, the user should either be able to move using the keyboard'
 For the keyboard functionality, there is an event listener attached to the body containing an if statement that determines which key has been pressed and to where the player should move (based on the `currentPosition`) variable. I have also added logic that adds a click event listener to the squares currently surrounding the player, which when clicked on, updates the player's current position to the square clicked on.
 
 - **Test**
-For the keyboard movement, I will move the player icon five squares in each direction using the keyboard to see if it moves appropriately for each key press. For the mouse, I will move the player icon from one side of the board to the other, three times, using only clicks (both using a mouse, and thumb clicks on a mobile device).
+For both the keyboard and click movement, I will move the player from one side of the board to the other - and discern whether the movement is working appropriately.
 
 - **Result**
+Although the keyboard movement did prove itself to be difficulty initially (as outlined in [bugs](##bugs)), I can confirm that -  both key and click movement - worked as expected for every attempt at crossing the game board.
 
 - **Verdict**
+This test has been successful.
 
 ### Updating Score
 **As a user, I would like to be able to track my score as the game progresses.**
@@ -210,8 +216,10 @@ Within the logic that checks if the player has successfully reached the final sq
 I will complete three rounds of the game myself, and check that the score increments appropriately. If it does, I will consider this test successful.
 
 - **Result**
+On each completed round, the score incremented appropriately.
 
 - **Verdict**
+This test has been successful.
 
 ### Get in Touch
 **As a user, I would like to be able to contact the game's creator in order to provide feedback.**

@@ -88,6 +88,7 @@ const generateCharacter = (position) => {
 const startNewRound = function(difficulty) {
     leaderPosition = 0;
     playerPosition = 0;
+    difficulty.startingSpeed *= 0.95;
     movementEnabled = false;
     const difficultyBtns = document.querySelectorAll('.intro-btn');
     const squares = document.querySelectorAll('.square');
@@ -100,7 +101,6 @@ const startNewRound = function(difficulty) {
     gameAreas.forEach((area) => {
         area.classList.add('d-none');
     });
-    // gameBoard.classList.remove('d-none');
     startGame(difficulty);
 }
 
@@ -285,7 +285,6 @@ const leadersTurn = (difficulty) => {
 /** begins the game - generates the board's square and leader, and begins the leader's turn */
 const startGame = difficulty => {
     reset = false;
-    console.log(difficulty.squares)
     gameAreas.forEach((area) => {
         area.classList.add('d-none');
     });

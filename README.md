@@ -1,5 +1,5 @@
 # Minefield Memory
-- Add Am I responsive image here once design is complete
+![Minefield Memory](/docs/screenshots/responsive-example.png)
 
 ## Goal For This Project
 

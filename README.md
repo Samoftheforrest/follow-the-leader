@@ -356,7 +356,7 @@ I played 5 rounds of the game, and during each of the leader's turns I continual
 ### Keydown event not resetting when the game resets
 
 - **Bug**
-[As mentioned above](###Player-still-able-to-move-after-getting-to-the-final-square), for every round of the game, a new `keydown` listener was added to the document. Using the fix I implemented in the aforementioned solution meant the `keydown` listener only had the board information for the current difficulty mode. If the player resets the game, the `keydown` logic does not reset.
+[As mentioned above](#player-still-able-to-move-after-getting-to-the-final-square), for every round of the game, a new `keydown` listener was added to the document. Using the fix I implemented in the aforementioned solution meant the `keydown` listener only had the board information for the current difficulty mode. If the player resets the game, the `keydown` logic does not reset.
 
 - **Fix**
 To get the game to reset properly, I added `window.location.reload()` to the `resetGame` function. This refreshes the page whenever the function is run, which in turn removes the keydown event listener.

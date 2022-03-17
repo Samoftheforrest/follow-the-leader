@@ -324,7 +324,23 @@ I used the reset button (the main title) and the 'play again' button five sepera
 ## Deployment
 
 ### Local Development
-- 
+I created this project using [GitHub](https://github.com/) to store the code and [Gitpod](https://www.gitpod.io/) as my code editor. To store my Gitpod code in GitHub, I used git commits followed by git pushing the code to the repository.
+
+This project can be run locally by running the following steps:
+
+1. Clone the project
+  - Navigate to the [project repo](https://github.com/Samoftheforrest/minefield-memory)
+  - Click the 'code' button (highlighted in the image below) - from here you have two options
+    1. Open a terminal and run the following the command: `git clone https://github.com/Samoftheforrest/sawyl.git`
+    2. Select 'download ZIP' to download a the files
+
+2. Navigate to, and open, the cloned/downloaded folder in your code editor, through the following steps
+  - File -> open folder
+  - Navigate through your file directory to the place where the repo is cloned/downloaded
+  - Select "open folder"
+3. Run a live server using your preferred method - during the creation of this project, I used two different live server
+  - [VScode Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) - this one is simple to run: right-click on the index.html file, and from the menu, select "open with live server"
+  - Run a python live server with the following command `python3 -m http.server` - for this method, a python installation is required.
 
 ### Deployment
 

@@ -7,7 +7,10 @@ const loseScreen = document.querySelector('.lose-screen');
 const squares = document.querySelector('.squares');
 const difficultyBtnsContainer = document.querySelector('#intro-btn-container');
 const score = document.querySelector('.score');
-const resetBtn = document.querySelector('.reset-btn');
+const message = document.querySelector('.message');
+const title = document.querySelector('.main-title');
+const playAgainBtn = document.querySelector('.play-again');
+const changeDifficultyBtn = document.querySelector('.change-difficulty');
 
 let playerPosition = 0;
 let leaderPosition = 0;
@@ -17,6 +20,9 @@ let currentScore = 0;
 let keyListenerActive = false;
 let movementEnabled = false;
 
+// success messages
+const successMessage = ['Well done soldier! Keep going!', 'Another one, home safe', 'Mission successful, good job!', 'Good work private!'];
+
 // difficulty settings
 const difficulties = [{
     mode: 'Easy',
@@ -24,11 +30,11 @@ const difficulties = [{
     startingSpeed: 1.5
 }, {
     mode: 'Medium',
-    squares: 49,
+    squares: 36,
     startingSpeed: 1.25
 }, {
     mode: 'Hard',
-    squares: 100,
+    squares: 64,
     startingSpeed: 1
 }];
 
@@ -48,6 +54,12 @@ const setScore = () => {
     score.textContent = currentScore;
 };
 setScore();
+
+const setMessage = () => {
+    let randomNumber = Math.floor(Math.random() * (successMessage.length));
+
+    message.textContent = successMessage[randomNumber];
+}
 
 /** removes any characters from all squares on the board */
 const clearSquares = () => {
@@ -93,6 +105,7 @@ const startNewRound = function(difficulty) {
 
 const playerWins = difficulty => {
     console.log('player successful');
+    setMessage();
     setTimeout(function() {
         clearSquares();
         currentScore++;
@@ -103,10 +116,10 @@ const playerWins = difficulty => {
 
 const playerLoses = difficulty => {
     console.log('Oh no! You\'ve stepped off the path!');
-    // gameAreas.forEach(area => {
-    //     area.classList.add('d-none');
-    // });
-    // loseScreen.classList.remove('d-none');
+    gameAreas.forEach(area => {
+        area.classList.add('d-none');
+    });
+    loseScreen.classList.remove('d-none');
 }
 
 const winOrLose = (difficulty) => {
@@ -279,16 +292,17 @@ const startGame = difficulty => {
 
 /** creates the difficulty buttons for the user to select from */
 const createDifficultyButtons = () => {
-    difficulties.forEach((difficulty, i) => {
+    difficulties.forEach( (difficulty) => {
         const button = document.createElement('a');
         button.setAttribute('href', '#');
         button.setAttribute('class', 'intro-btn');
+        button.setAttribute('aria-label', `start game on ${difficulty.mode} mode`);
         button.innerText = difficulty.mode;
         button.addEventListener('click', function() {
             startGame(difficulty);
         });
         difficultyBtnsContainer.appendChild(button);
-    })
+    });
 }
 
 createDifficultyButtons();
@@ -314,4 +328,5 @@ const resetGame = function() {
 }
 
 // event listener
-resetBtn.addEventListener('click', resetGame);
+playAgainBtn.addEventListener('click', resetGame);
+title.addEventListener('click', resetGame);

@@ -12,15 +12,8 @@
 <body>
 <header class="container">
     <div class="row">
-        <div class="col-sm-9 d-flex justify-content-center justify-content-sm-start">
-            <h1 class="main-title"><a href="#">Minefield Memory</a></h1>
-        </div>
-        <div class="col-sm-3">
-            <nav class="d-flex align-items-center justify-content-center justify-content-sm-end h-100">
-                <ul class="d-flex nav-list">
-                    <li class="nav-list-item d-flex align-items-center reset-btn"><a href="#">Reset</a></li>
-                </ul>
-            </nav>
+        <div class="col-12 d-flex justify-content-center justify-content-center">
+            <h1 class="main-title"><a href="#" aria-label="minefield memory">Minefield Memory</a></h1>
         </div>
     </div>
 </header><!-- header -->
@@ -61,19 +54,24 @@
 <section class="container">
     <div class="lose-screen game-area d-none">
         <div class="row m-0 w-100 h-100">
-            <div class="col-12">
-                <h2>BOOM</h2>
+            <div class="col-12 h-100 w-100 d-flex flex-column justify-content-center align-items-center">
+                <h2 class="lose-screen-title">BOOM</h2>
+                <p class="lose-screen-text text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque totam non sed doloribus. Facere reprehenderit vitae alias doloremque totam, autem, sequi dolor asperiores voluptas dolores cupiditate dicta illum, voluptatum est!</p>
+                <p class="lose-screen-text text-center">You scored<span class="score"></span></p>
+                <div>
+                    <button class="lose-screen-btn play-again" aria-label="play again">Play again</button>
+                </div>
             </div>
         </div>
     </div>
-</section><!-- game board -->
+</section><!-- lose screen -->
 <footer class="container">
     <section class="social-icons">
         <div class="row">
             <div class="col text-center">
-                <a href="https://www.facebook.com/SamForrest1992/" target="_blank" rel="noopener"><i class="fa-brands fa-facebook"></i></a>
-                <a href="https://twitter.com/samueljforrest" target="_blank" rel="noopener"><i class="fa-brands fa-twitter"></i></a>
-                <a href="https://www.instagram.com/samueljamesforrest/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.facebook.com/SamForrest1992/" target="_blank" rel="noopener" aria-label="visit us on Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://twitter.com/samueljforrest" target="_blank" rel="noopener" aria-label="visit us on Twitter"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://www.instagram.com/samueljamesforrest/" target="_blank" rel="noopener" aria-label="visit us on Instagram"><i class="fa-brands fa-instagram"></i></a>
             </div>
         </div>
     </section>

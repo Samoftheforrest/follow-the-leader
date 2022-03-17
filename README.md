@@ -395,7 +395,7 @@ This page is deployed using [GitHub Pages](https://pages.github.com/). Here I wi
 
 ## Credits
 - [This StackOverflow thread](https://stackoverflow.com/questions/10000083/javascript-event-handler-with-parameters) helped me to understand passing parameters to event listeners, which I implemented myself within the game's `playerMoves` function.
-- [This StackOverflow thread](https://stackoverflow.com/questions/3715047/how-to-reload-a-page-using-javascript) showed me how to use JavaScript to refresh the page - which I used to solve [this issue](###keydown-event-not-resetting-when-the-game-resets)
+- [This StackOverflow thread](https://stackoverflow.com/questions/3715047/how-to-reload-a-page-using-javascript) showed me how to use JavaScript to refresh the page - which I used to solve [this issue](#keydown-event-not-resetting-when-the-game-resets)
 
 ### General Thanks
 - I would like to thank my partner, Laura, for testing the site and suggesting improvements.

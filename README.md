@@ -302,6 +302,17 @@ Initially, I attempted to remove the `keydown` event listener at the end of the 
 - **Verdict**
 I played 5 rounds of the game, and during each of the leader's turns I continually pressed all of the buttons. The player was unable to move during the leader's turn. I have determined that this fix has been successful.
 
+### Keydown event not resetting when the game resets
+
+- **Bug**
+[As mentioned above](###Player-still-able-to-move-after-getting-to-the-final-square), for every round of the game, a new `keydown` listener was added to the document. Using the fix I implemented in the aforementioned solution meant the `keydown` listener only had the board information for the current difficulty mode. If the player resets the game, the `keydown` logic does not reset.
+
+- **Fix**
+To get the game to reset properly, I added `window.location.reload()` to the `resetGame` function. This refreshes the page whenever the function is run, which in turn removes the keydown event listener.
+
+- **Verdict**
+I used the reset button (the main title) and the 'play again' button five seperate times - making sure to switch to a new difficulty each time. On each occasion, the `keydown` listener was added correctly. I have determined this fix to be successful.
+
 ## Deployment
 
 ### Local Development
@@ -317,6 +328,8 @@ This page is deployed using [GitHub Pages](https://pages.github.com/). Here I wi
 
 ## Credits
 - [This StackOverflow thread](https://stackoverflow.com/questions/10000083/javascript-event-handler-with-parameters) helped me to understand passing parameters to event listeners, which I implemented myself within the game's `playerMoves` function.
-
+- [This StackOverflow thread](https://stackoverflow.com/questions/3715047/how-to-reload-a-page-using-javascript) showed me how to use JavaScript to refresh the page - which I used to solve [this issue](###Keydown-event-not-resetting-when-the-game-resets)
 
 ### General Thanks
+- I would like to thank my partner, Laura, for testing the site and suggesting improvements.
+- I would like to thank my mentor [Simen](https://github.com/Eventyret) for his invaluable feedback on this project.

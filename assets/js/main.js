@@ -19,6 +19,7 @@ let player = '<div class="player"></div>';
 let currentScore = 0;
 let keyListenerActive = false;
 let movementEnabled = false;
+let reset = false;
 
 // success messages
 const successMessage = ['Well done soldier! Keep going!', 'Another one, home safe', 'Mission successful, good job!', 'Good work private!'];
@@ -71,7 +72,7 @@ const clearSquares = () => {
 }
 
 /** creates the leader icon and adds data-path attribute to each square that it travels across */
-const generateCharacter = position => {
+const generateCharacter = (position) => {
     const square = document.querySelectorAll('.square');
 
     clearSquares();
@@ -262,25 +263,29 @@ const playersTurn = (difficulty) => {
 }
 
 /** begins the leader's turn and ends it when the leader reaches the final square */
-const leadersTurn = difficulty => {
+const leadersTurn = (difficulty) => {
 
-    if (leaderPosition === (difficulty.squares) - 1) {
-        generateCharacter('leader');
-        setTimeout(function() {
-            playersTurn(difficulty);
-        }, (difficulty.startingSpeed) * 1000);
-        return;
-    } else {
-        generateCharacter('leader');
-        determineLeaderPosition(difficulty);
-        setTimeout(function() {
-            leadersTurn(difficulty);
-        }, (difficulty.startingSpeed) * 1000);
+    if (!reset) {
+        if (leaderPosition === (difficulty.squares) - 1) {
+            generateCharacter('leader');
+            setTimeout(function() {
+                playersTurn(difficulty);
+            }, (difficulty.startingSpeed) * 1000);
+            return;
+        } else {
+            generateCharacter('leader');
+            determineLeaderPosition(difficulty);
+            setTimeout(function() {
+                leadersTurn(difficulty);
+            }, (difficulty.startingSpeed) * 1000);
+        }
     }
 }
 
 /** begins the game - generates the board's square and leader, and begins the leader's turn */
 const startGame = difficulty => {
+    reset = false;
+    console.log(difficulty.squares)
     gameAreas.forEach((area) => {
         area.classList.add('d-none');
     });
@@ -308,25 +313,9 @@ const createDifficultyButtons = () => {
 createDifficultyButtons();
 
 const resetGame = function() {
-    leaderPosition = 0;
-    playerPosition = 0;
-    currentScore = 0;
-    setScore();
-    const difficultyBtns = document.querySelectorAll('.intro-btn');
-    const squares = document.querySelectorAll('.square');
-    difficultyBtns.forEach(btn => {
-        btn.remove();
-    })
-    squares.forEach(square => {
-        square.remove();
-    })
-    gameAreas.forEach((area) => {
-        area.classList.add('d-none');
-    });
-    introScreen.classList.remove('d-none');
-    createDifficultyButtons();
+    window.location.reload();
 }
 
-// event listener
+// event listeners 
 playAgainBtn.addEventListener('click', resetGame);
 title.addEventListener('click', resetGame);

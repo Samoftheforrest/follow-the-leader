@@ -31,11 +31,11 @@ const difficulties = [{
     startingSpeed: 1.5
 }, {
     mode: 'Medium',
-    squares: 36,
+    squares: 25,
     startingSpeed: 1.25
 }, {
     mode: 'Hard',
-    squares: 64,
+    squares: 49,
     startingSpeed: 1
 }];
 

@@ -22,7 +22,7 @@ let movementEnabled = false;
 let reset = false;
 
 // success messages
-const successMessage = ['Well done soldier! Keep going!', 'Another one, home safe', 'Mission successful, good job!', 'Good work private!'];
+const successMessage = ['Well done soldier! Keep going!', 'Another one, home safe', 'Mission successful, good job!', 'Good work private!', 'Nicely done, let\'s keep moving!'];
 
 // difficulty settings
 const difficulties = [{
@@ -264,6 +264,8 @@ const playersTurn = (difficulty) => {
 
 /** begins the leader's turn and ends it when the leader reaches the final square */
 const leadersTurn = (difficulty) => {
+
+    message.textContent = 'This way private. Follow me!';
 
     if (!reset) {
         if (leaderPosition === (difficulty.squares) - 1) {

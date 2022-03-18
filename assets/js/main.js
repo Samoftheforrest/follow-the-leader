@@ -107,7 +107,6 @@ const startNewRound = function(difficulty) {
 }
 
 const playerWins = difficulty => {
-    console.log('player successful');
     setMessage();
     setTimeout(function() {
         clearSquares();
@@ -118,7 +117,6 @@ const playerWins = difficulty => {
 }
 
 const playerLoses = difficulty => {
-    console.log('Oh no! You\'ve stepped off the path!');
     gameAreas.forEach(area => {
         area.classList.add('d-none');
     });
@@ -214,14 +212,12 @@ const playerMovement = difficulty => {
                 return;
             }
             if (playerPosition >= (difficulty.squares - (Math.sqrt(difficulty.squares)))) {
-                console.log('bottom reached');
                 squares.forEach(square => {
                     square.removeEventListener('click', mouseMovement);
                 })
                 squares[playerPosition + 1].addEventListener('click', mouseMovement);
                 return;
             } else if (playerPosition % Math.sqrt(difficulty.squares) === (Math.sqrt(difficulty.squares) - 1)) {
-                console.log('right reached');
                 squares.forEach(square => {
                     square.removeEventListener('click', mouseMovement);
                 })
@@ -257,7 +253,6 @@ const playerMovement = difficulty => {
 
 /** begins the player's turn */
 const playersTurn = (difficulty) => {
-    console.log('players turn begins');
     clearSquares();
     generateCharacter('player');
     movementEnabled = true;

@@ -6,7 +6,7 @@ const introScreen = document.querySelector('.intro-screen');
 const loseScreen = document.querySelector('.lose-screen');
 const squares = document.querySelector('.squares');
 const difficultyBtnsContainer = document.querySelector('#intro-btn-container');
-const score = document.querySelector('.score');
+const score = document.querySelectorAll('.score');
 const message = document.querySelector('.message');
 const title = document.querySelector('.main-title');
 const playAgainBtn = document.querySelector('.play-again');
@@ -52,7 +52,9 @@ const generateSquares = difficulty => {
 };
 
 const setScore = () => {
-    score.textContent = currentScore;
+    score.forEach(score => {
+        score.textContent = currentScore;
+    })
 };
 setScore();
 

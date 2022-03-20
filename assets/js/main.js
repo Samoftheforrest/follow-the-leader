@@ -54,7 +54,7 @@ const generateSquares = difficulty => {
 const setScore = () => {
     score.forEach(score => {
         score.textContent = currentScore;
-    })
+    });
 };
 setScore();
 
@@ -62,7 +62,7 @@ const setMessage = () => {
     let randomNumber = Math.floor(Math.random() * (successMessage.length));
 
     message.textContent = successMessage[randomNumber];
-}
+};
 
 /** removes any characters from all squares on the board */
 const clearSquares = () => {
@@ -71,10 +71,10 @@ const clearSquares = () => {
     for (let i of square) {
         i.innerHTML = '';
     }
-}
+};
 
 /** creates the leader icon and adds data-path attribute to each square that it travels across */
-const generateCharacter = (position) => {
+const generateCharacter = position => {
     const square = document.querySelectorAll('.square');
 
     clearSquares();
@@ -85,9 +85,9 @@ const generateCharacter = (position) => {
     } else {
         square[playerPosition].innerHTML = player;
     }
-}
+};
 
-const startNewRound = function(difficulty) {
+const startNewRound = difficulty => {
     leaderPosition = 0;
     playerPosition = 0;
     difficulty.startingSpeed *= 0.95;
@@ -104,7 +104,7 @@ const startNewRound = function(difficulty) {
         area.classList.add('d-none');
     });
     startGame(difficulty);
-}
+};
 
 const playerWins = difficulty => {
     setMessage();
@@ -114,23 +114,23 @@ const playerWins = difficulty => {
         setScore();
         startNewRound(difficulty);
     }, (difficulty.startingSpeed * 1000));
-}
+};
 
-const playerLoses = difficulty => {
+const playerLoses = () => {
     gameAreas.forEach(area => {
         area.classList.add('d-none');
     });
     loseScreen.classList.remove('d-none');
-}
+};
 
-const winOrLose = (difficulty) => {
+const winOrLose = difficulty => {
     const square = document.querySelectorAll('.square');
     if (playerPosition === (difficulty.squares) - 1) {
         playerWins(difficulty);
     } else if (!square[playerPosition].hasAttribute('data-path')) {
         playerLoses(difficulty);
     }
-}
+};
 
 /** updates the position of the leader */
 const updateCharacterPosition = (position, move, difficulty) => {
@@ -141,10 +141,10 @@ const updateCharacterPosition = (position, move, difficulty) => {
         generateCharacter('player');
         winOrLose(difficulty);
     }
-}
+};
 
 /** determines if the leader is at the edge of the board, and then determines where the leader should move to */
-const determineLeaderPosition = (difficulty) => {
+const determineLeaderPosition = difficulty => {
 
     movementEnabled = false;
 
@@ -165,12 +165,12 @@ const determineLeaderPosition = (difficulty) => {
         updateCharacterPosition('leader', Math.sqrt(difficulty.squares));
         return;
     }
-}
+};
 
 /** adds event listeners (both key and click) to allow the player to move */
 const playerMovement = difficulty => {
 
-    const keyboardMovement = function (e) {
+    const keyboardMovement = e => {
         if (playerPosition !== (difficulty.squares - 1)) {
             if (movementEnabled === false) {
                 return;
@@ -204,7 +204,7 @@ const playerMovement = difficulty => {
 
         const squares = document.querySelectorAll('.square');
         if (playerPosition < (difficulty.squares - 1)) {
-        const addClickListeners = function() {
+        const addClickListeners = () => {
             if (playerPosition === (difficulty.squares - 1)) {
                 squares.forEach(square => {
                     square.removeEventListener('click', mouseMovement);
@@ -229,7 +229,7 @@ const playerMovement = difficulty => {
             }
         }
 
-        const mouseMovement = function(e) {
+        const mouseMovement = e => {
             if (e.target === squares[playerPosition + 1]) {
                 updateCharacterPosition('player', 1, difficulty);
             } else {
@@ -252,15 +252,15 @@ const playerMovement = difficulty => {
 };
 
 /** begins the player's turn */
-const playersTurn = (difficulty) => {
+const playersTurn = difficulty => {
     clearSquares();
     generateCharacter('player');
     movementEnabled = true;
     playerMovement(difficulty);
-}
+};
 
 /** begins the leader's turn and ends it when the leader reaches the final square */
-const leadersTurn = (difficulty) => {
+const leadersTurn = difficulty => {
 
     message.textContent = 'This way private. Follow me!';
 
@@ -279,7 +279,7 @@ const leadersTurn = (difficulty) => {
             }, (difficulty.startingSpeed) * 1000);
         }
     }
-}
+};
 
 /** begins the game - generates the board's square and leader, and begins the leader's turn */
 const startGame = difficulty => {
@@ -291,11 +291,11 @@ const startGame = difficulty => {
     generateSquares(difficulty);
     generateCharacter(difficulty);
     leadersTurn(difficulty);
-}
+};
 
 /** creates the difficulty buttons for the user to select from */
 const createDifficultyButtons = () => {
-    difficulties.forEach( (difficulty) => {
+    difficulties.forEach( difficulty => {
         const button = document.createElement('a');
         button.setAttribute('href', '#');
         button.setAttribute('class', 'intro-btn');
@@ -306,13 +306,13 @@ const createDifficultyButtons = () => {
         });
         difficultyBtnsContainer.appendChild(button);
     });
-}
+};
 
 createDifficultyButtons();
 
 const resetGame = function() {
     window.location.reload();
-}
+};
 
 // event listeners 
 playAgainBtn.addEventListener('click', resetGame);

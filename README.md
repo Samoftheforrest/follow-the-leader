@@ -135,6 +135,8 @@ I used [Google Fonts](https://fonts.google.com/) to select the page's fonts. I u
 ### UX/UI Flowchart
 - [UX/UI Flowchart](docs/uxui/flowchart/minefield-memory-uxui-flowchart.png)
 
+[Back to top](#minefield-memory)
+
 ## Features
 
 ### Existing Features
@@ -165,6 +167,8 @@ I used [Google Fonts](https://fonts.google.com/) to select the page's fonts. I u
 **Use Key and Click Movement Together**
 - Allow users to, within a single round of the game, to use a combination of key and click movements to travel across the gameboard.
 
+[Back to top](#minefield-memory)
+
 ## Technologies Used
 
 ### Languages
@@ -179,6 +183,8 @@ I used [Google Fonts](https://fonts.google.com/) to select the page's fonts. I u
 - [Figma](https://www.figma.com)
 - [Font Awesome](https://fontawesome.com/)
 - [Google Fonts](https://fonts.google.com/)
+
+[Back to top](#minefield-memory)
 
 ## Testing
 
@@ -300,6 +306,8 @@ Each of the clicks, to all three of the links, opened the appropriate page each 
 - **Verdict**
 This test has been successful.
 
+[Back to top](#minefield-memory)
+
 ## Bugs
 
 ### Gaps Between Game Squares and Game Board Container 
@@ -383,6 +391,8 @@ To get the game to reset properly, I added `window.location.reload()` to the `re
 - **Verdict**
 I used the reset button (the main title) and the 'play again' button five seperate times - making sure to switch to a new difficulty each time. On each occasion, the `keydown` listener was added correctly. I have determined this fix to be successful.
 
+[Back to top](#minefield-memory)
+
 ## Deployment
 
 ### Local Development
@@ -417,6 +427,8 @@ This page is deployed using [GitHub Pages](https://pages.github.com/). Here I wi
 ![Set branch to main and folder to root](docs/screenshots/deployment-step-3.png)
 4. Following this, any time you commit and push to your repo, your GitHub page will automatically update.
 
+[Back to top](#minefield-memory)
+
 ## Credits
 - [This StackOverflow thread](https://stackoverflow.com/questions/10000083/javascript-event-handler-with-parameters) helped me to understand passing parameters to event listeners, which I implemented myself within the game's `playerMoves` function.
 - [This StackOverflow thread](https://stackoverflow.com/questions/3715047/how-to-reload-a-page-using-javascript) showed me how to use JavaScript to refresh the page - which I used to solve [this issue](#keydown-event-not-resetting-when-the-game-resets)
@@ -424,3 +436,5 @@ This page is deployed using [GitHub Pages](https://pages.github.com/). Here I wi
 ### General Thanks
 - I would like to thank my partner, Laura, for testing the site and suggesting improvements.
 - I would like to thank my mentor [Simen](https://github.com/Eventyret) for his invaluable feedback on this project.
+
+[Back to top](#minefield-memory)

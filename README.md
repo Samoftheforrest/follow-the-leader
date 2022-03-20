@@ -196,6 +196,12 @@ I will use the [Chrome Developer Tools](https://developer.chrome.com/docs/devtoo
 - **Result**
 The layout appeared as expected on all of the listed device sizes.
 
+![iPhone SE view](docs/screenshots/iphone-se-view.png)
+
+![Samsung Galaxy S20 view](docs/screenshots/samsung-s20-view.png)
+
+![iPad mini view](docs/screenshots/ipad-mini-view.png)
+
 - **Verdict**
 This test has been successful.
 
@@ -212,6 +218,8 @@ I will click on each of these buttons 5 times to see if the correct amount of sq
 
 - **Result**
 On each of the clicks, for all of the buttons, the correct amount of squares were generated and displayed onscreen.
+
+![Difficulty buttons](docs/screenshots/difficulty-buttons.png)
 
 - **Verdict**
 This test has been successful.
@@ -230,6 +238,8 @@ I will add in a `console.log()` that displays the current speed of the leader ev
 - **Result**
 In every round of the game, the `console.log()` displayed a slightly lower number each time.
 
+![Game speed increase](docs/screenshots/speed-increase.png)
+
 - **Verdict**
 This test has been successful.
 
@@ -245,7 +255,7 @@ For the keyboard functionality, there is an event listener attached to the body 
 For both the keyboard and click movement, I will move the player from one side of the board to the other - and discern whether the movement is working appropriately.
 
 - **Result**
-Although the keyboard movement did prove itself to be difficulty initially (as outlined in [bugs](##bugs)), I can confirm that -  both key and click movement - worked as expected for every attempt at crossing the game board.
+Although the keyboard movement did prove itself to be difficulty initially (as outlined in [bugs](#bugs)), I can confirm that -  both key and click movement - worked as expected for every attempt at crossing the game board.
 
 - **Verdict**
 This test has been successful.
@@ -264,6 +274,10 @@ I will complete three rounds of the game myself, and check that the score increm
 - **Result**
 On each completed round, the score incremented appropriately.
 
+![One point](docs/screenshots/points.png)
+![Two point](docs/screenshots/points-2.png)
+![Three point](docs/screenshots/points-3.png)
+
 - **Verdict**
 This test has been successful.
 
@@ -280,6 +294,8 @@ I will click each of these links 5 times, and check whether they take the user t
 
 - **Result**
 Each of the clicks, to all three of the links, opened the appropriate page each time.
+
+![Get in touch section](docs/screenshots/social-icons.png)
 
 - **Verdict**
 This test has been successful.
@@ -377,8 +393,10 @@ This project can be run locally by running the following steps:
 1. Clone the project
   - Navigate to the [project repo](https://github.com/Samoftheforrest/minefield-memory)
   - Click the 'code' button (highlighted in the image below) - from here you have two options
+  ![Navigate to the project and select (code)](docs/screenshots/development-step-1.png)
     1. Open a terminal and run the following the command: `git clone https://github.com/Samoftheforrest/sawyl.git`
     2. Select 'download ZIP' to download a the files
+    ![Select between the two options](docs/screenshots/development-step-2.png)
 
 2. Navigate to, and open, the cloned/downloaded folder in your code editor, through the following steps
   - File -> open folder
@@ -392,8 +410,11 @@ This project can be run locally by running the following steps:
 
 This page is deployed using [GitHub Pages](https://pages.github.com/). Here I will explain how to set up a GitHub Page:
 1. Navigate to the main page of the project repo, and click the 'settings' tab.
+![Navigate to main page of the repo, and click 'settings'](docs/screenshots/deployment-step-1.png)
 2. On the following page, select 'pages' from the sidebar.
+![Select 'pages'](docs/screenshots/deployment-step-2.png)
 3. Make sure the branch is set to 'main' and the folder set to 'root' and click save to publish your GitHub page.
+![Set branch to main and folder to root](docs/screenshots/deployment-step-3.png)
 4. Following this, any time you commit and push to your repo, your GitHub page will automatically update.
 
 ## Credits

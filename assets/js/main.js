@@ -170,7 +170,39 @@ const determineLeaderPosition = (difficulty) => {
 /** adds event listeners (both key and click) to allow the player to move */
 const playerMovement = difficulty => {
 
-    const squares = document.querySelectorAll('.square');
+    const keyboardMovement = function (e) {
+        if (playerPosition !== (difficulty.squares - 1)) {
+            if (movementEnabled === false) {
+                return;
+            }
+            if (e.key === "ArrowRight") {
+                if (playerPosition % Math.sqrt(difficulty.squares) === (Math.sqrt(difficulty.squares) - 1)) {
+                    return;
+                };
+                updateCharacterPosition('player', 1, difficulty);
+            } else if (e.key === "ArrowLeft") {
+                if (playerPosition % Math.sqrt(difficulty.squares) === 0) {
+                    return;
+                };
+                updateCharacterPosition('player', -1, difficulty);
+            } else if (e.key === "ArrowDown") {
+                if (playerPosition >= (difficulty.squares - (Math.sqrt(difficulty.squares)))) {
+                    return;
+                };
+                updateCharacterPosition('player', Math.sqrt(difficulty.squares), difficulty);
+            } else if (e.key === "ArrowUp") {
+                if (playerPosition < Math.sqrt(difficulty.squares)) {
+                    return;
+                };
+                updateCharacterPosition('player', -`${Math.sqrt(difficulty.squares)}`, difficulty);
+            } else {
+                // stops other keys making character disappear
+                updateCharacterPosition('player', 0);
+            }
+        }
+    }
+
+        const squares = document.querySelectorAll('.square');
         if (playerPosition < (difficulty.squares - 1)) {
         const addClickListeners = function() {
             if (playerPosition === (difficulty.squares - 1)) {
@@ -211,46 +243,11 @@ const playerMovement = difficulty => {
 
         squares[playerPosition + 1].addEventListener('click', mouseMovement);
         squares[playerPosition + Math.sqrt(difficulty.squares)].addEventListener('click', mouseMovement);
+    }
 
-        const keyboardMovement = function (e) {
-            if (playerPosition !== (difficulty.squares - 1)) {
-                if (movementEnabled === false) {
-                    return;
-                }
-                if (e.key === "ArrowRight") {
-                    if (playerPosition % Math.sqrt(difficulty.squares) === (Math.sqrt(difficulty.squares) - 1)) {
-                        return;
-                    };
-                    updateCharacterPosition('player', 1, difficulty);
-                    addClickListeners();
-                } else if (e.key === "ArrowLeft") {
-                    if (playerPosition % Math.sqrt(difficulty.squares) === 0) {
-                        return;
-                    };
-                    updateCharacterPosition('player', -1, difficulty);
-                    addClickListeners();
-                } else if (e.key === "ArrowDown") {
-                    if (playerPosition >= (difficulty.squares - (Math.sqrt(difficulty.squares)))) {
-                        return;
-                    };
-                    updateCharacterPosition('player', Math.sqrt(difficulty.squares), difficulty);
-                    addClickListeners();
-                } else if (e.key === "ArrowUp") {
-                    if (playerPosition < Math.sqrt(difficulty.squares)) {
-                        return;
-                    };
-                    updateCharacterPosition('player', -`${Math.sqrt(difficulty.squares)}`, difficulty);
-                    addClickListeners();
-                } else {
-                    // stops other keys making character disappear
-                    return;
-                }
-            }
-        }
-        if (keyListenerActive === false) {
-            document.body.addEventListener('keydown', keyboardMovement);
-            keyListenerActive = true;
-        }
+    if (keyListenerActive === false) {
+        document.body.addEventListener('keydown', keyboardMovement);
+        keyListenerActive = true;
     }
 };
 

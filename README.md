@@ -162,6 +162,9 @@ I used [Google Fonts](https://fonts.google.com/) to select the page's fonts. I u
 **Save High Scores**
 - Allow users to save their highest score, and have an additional page in which displays a leaderboard of the highest scores of all players.
 
+**Use Key and Click Movement Together**
+- Allow users to, within a single round of the game, to use a combination of key and click movements to travel across the gameboard.
+
 ## Technologies Used
 
 ### Languages

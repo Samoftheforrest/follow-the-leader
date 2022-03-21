@@ -11,6 +11,7 @@ const message = document.querySelector('.message');
 const title = document.querySelector('.main-title');
 const playAgainBtn = document.querySelector('.play-again');
 const changeDifficultyBtn = document.querySelector('.change-difficulty');
+const movementInstuctions = document.querySelector('.movement-instructions');
 
 let playerPosition = 0;
 let leaderPosition = 0;
@@ -50,6 +51,16 @@ const generateSquares = difficulty => {
         squares.append(square);
     }
 };
+
+const setMovementInstructions = () => {
+    let width = window.innerWidth;
+    if (width < 992) {
+        movementInstuctions.textContent = 'click on the square that you wish to travel to';
+    } else {
+        movementInstuctions.textContent = 'use the arrow keys on your keyboard';
+    }
+}
+setMovementInstructions();
 
 const setScore = () => {
     score.forEach(score => {
@@ -170,6 +181,9 @@ const determineLeaderPosition = difficulty => {
 /** adds event listeners (both key and click) to allow the player to move */
 const playerMovement = difficulty => {
 
+    let width = window.innerWidth;
+
+    if (width > 992) {
     const keyboardMovement = e => {
         if (playerPosition !== (difficulty.squares - 1)) {
             if (movementEnabled === false) {
@@ -202,6 +216,13 @@ const playerMovement = difficulty => {
         }
     }
 
+    if (keyListenerActive === false) {
+        document.body.addEventListener('keydown', keyboardMovement);
+        keyListenerActive = true;
+    }
+}
+
+    if (width < 992) {
         const squares = document.querySelectorAll('.square');
         if (playerPosition < (difficulty.squares - 1)) {
         const addClickListeners = () => {
@@ -244,11 +265,7 @@ const playerMovement = difficulty => {
         squares[playerPosition + 1].addEventListener('click', mouseMovement);
         squares[playerPosition + Math.sqrt(difficulty.squares)].addEventListener('click', mouseMovement);
     }
-
-    if (keyListenerActive === false) {
-        document.body.addEventListener('keydown', keyboardMovement);
-        keyListenerActive = true;
-    }
+}
 };
 
 /** begins the player's turn */

@@ -140,7 +140,7 @@ I used [Google Fonts](https://fonts.google.com/) to select the page's fonts. I u
 ## Features
 
 ### Existing Features
-- The ability to move using either keyboard or mouse (or thumb clicks on mobile devices)
+- The ability to move using either keyboard (on desktop) or mouse/thumb clicks (on mobile devices)
 - Ability to choose between three difficulty levels: easy, medium and hard
 - Randomised paths through the minefield - meaning no two games are the same!
 - The ability to provide feedback via social media (through links)
@@ -252,10 +252,10 @@ This test has been successful.
 ### Movement Functionality
 **As a user, I would like to be able to play the game using either using a keyboard or mouse/mobile clicks.**
 - **Plan**
-When the game begins, the user should either be able to move using the keyboard's arrow keys or by clicking one of the squares next to the square that they are currently on.
+When the game begins, the user should either be able to move using the keyboard's arrow keys or by clicking one of the squares next to the square that they are currently on (dependent on screen size).
 
 - **Implementation**
-For the keyboard functionality, there is an event listener attached to the body containing an if statement that determines which key has been pressed and to where the player should move (based on the `currentPosition`) variable. I have also added logic that adds a click event listener to the squares currently surrounding the player, which when clicked on, updates the player's current position to the square clicked on.
+On desktop, there is an event listener attached to the body containing an if statement that determines which key has been pressed and to where the player should move (based on the `currentPosition`) variable. On smaller screens, I have added logic that adds a click event listener to the squares currently surrounding the player, which when clicked on, updates the player's current position to the square clicked on.
 
 - **Test**
 For both the keyboard and click movement, I will move the player from one side of the board to the other - and discern whether the movement is working appropriately.
@@ -309,17 +309,6 @@ This test has been successful.
 [Back to top](#minefield-memory)
 
 ## Bugs
-
-### Gaps Between Game Squares and Game Board Container 
-
-- **Bug**
-The squares of the game board are given a width and height in `rem`. This causes some of the squares to wrap onto the next line on easy and medium difficulty modes.
-
-- **Fix**
-My original fix for this was to change the width and height of the squares by adding a class dependent on the difficulty selected. However, as I wanted to maintain the possiblilty of including additional difficulties in later iterations of the game, I decided to add logic that calculates the width and height of the squares based on the sqaure root (using `Math.sqrt()`) of the squares generated - i.e. if a 100 squares were generated, the width and height of each square would be 10% of the board.
-
-- **Verdict**
-I have tested this fix on: easy mode, with 16 squares; medium mode, with 49 squares; and hard mode, with 100 squares. All of the game board squares have rendered appropriately. I have determined that this fix has been successful.
 
 ### Game Board Obscured by Social Icons on Laptop Screens
 

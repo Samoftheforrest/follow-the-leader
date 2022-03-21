@@ -115,7 +115,8 @@ header {
 /* set heights for the game board */
 .game-area {
     background: var(--shiny-shamrock);
-    height: 450px;
+    height: calc(75vh - 64px);
+    min-height: 450px;
     padding: 15px 0;
     border-radius: 4px;
     border: 1px solid var(--dark-jungle-green-opaque);
@@ -247,9 +248,14 @@ header {
 .social-icons {
     background: var(--shiny-shamrock);
     border-radius: 4px;
+    height: 7.5vh;
+    min-height: 65px;
     padding: 1.2rem 0;
     margin-top: 2rem;
     border: 1px solid var(--dark-jungle-green-opaque);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .social-icons a {
@@ -276,9 +282,6 @@ header {
 }
 
 @media screen and (min-width: 768px) {
-    .game-area {
-        height: 600px;
-    }
     .intro-text {
         font-size: 1.6rem;
     }
@@ -287,10 +290,6 @@ header {
 @media screen and (min-width: 992px) {
     .intro-title {
         font-size: 2.5rem;
-    }
-    /*game board*/
-    .game-area {
-        height: 400px;
     }
 
     .game-squares {

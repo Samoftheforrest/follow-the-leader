@@ -52,6 +52,7 @@ const generateSquares = difficulty => {
     }
 };
 
+/** determines whether the game is being played on a desktop or mobile device, and sets the movement instructions on the intro page */
 const setMovementInstructions = () => {
     let width = window.innerWidth;
     if (width < 992) {
@@ -62,6 +63,7 @@ const setMovementInstructions = () => {
 }
 setMovementInstructions();
 
+/** sets the score to the player's current score */
 const setScore = () => {
     score.forEach(score => {
         score.textContent = currentScore;
@@ -69,6 +71,7 @@ const setScore = () => {
 };
 setScore();
 
+/** sets the sgt's message every time the player successfully crosses the board */
 const setMessage = () => {
     let randomNumber = Math.floor(Math.random() * (successMessage.length));
 
@@ -98,6 +101,7 @@ const generateCharacter = position => {
     }
 };
 
+/** sets the board and initiates the new round */
 const startNewRound = difficulty => {
     leaderPosition = 0;
     playerPosition = 0;
@@ -117,6 +121,7 @@ const startNewRound = difficulty => {
     startGame(difficulty);
 };
 
+/** sets a victory message, updates the players score, then starts a new round */
 const playerWins = difficulty => {
     setMessage();
     setTimeout(function() {
@@ -127,6 +132,7 @@ const playerWins = difficulty => {
     }, (difficulty.startingSpeed * 1000));
 };
 
+/** displays the game over screen */
 const playerLoses = () => {
     movementEnabled = false;
     gameAreas.forEach(area => {
@@ -135,6 +141,7 @@ const playerLoses = () => {
     loseScreen.classList.remove('d-none');
 };
 
+/** determines whether the player has won or lost */
 const winOrLose = difficulty => {
     const square = document.querySelectorAll('.square');
     if (playerPosition === (difficulty.squares) - 1) {
@@ -182,91 +189,102 @@ const determineLeaderPosition = difficulty => {
 /** adds event listeners (both key and click) to allow the player to move */
 const playerMovement = difficulty => {
 
+    // defines the width of the screen
     let width = window.innerWidth;
 
+    // desktop movement logic
     if (width > 992) {
-    const keyboardMovement = e => {
-        if (playerPosition !== (difficulty.squares - 1)) {
-            if (movementEnabled === false) {
-                return;
+        const keyboardMovement = e => {
+            // check if the player is on any square other than the final one
+            if (playerPosition !== (difficulty.squares - 1)) {
+                // stop the player moving (during the leaders turn)
+                if (movementEnabled === false) {
+                    return;
+                }
+                // arrow key logic
+                if (e.key === "ArrowRight") {
+                    if (playerPosition % Math.sqrt(difficulty.squares) === (Math.sqrt(difficulty.squares) - 1)) {
+                        return;
+                    };
+                    updateCharacterPosition('player', 1, difficulty);
+                } else if (e.key === "ArrowLeft") {
+                    if (playerPosition % Math.sqrt(difficulty.squares) === 0) {
+                        return;
+                    };
+                    updateCharacterPosition('player', -1, difficulty);
+                } else if (e.key === "ArrowDown") {
+                    if (playerPosition >= (difficulty.squares - (Math.sqrt(difficulty.squares)))) {
+                        return;
+                    };
+                    updateCharacterPosition('player', Math.sqrt(difficulty.squares), difficulty);
+                } else if (e.key === "ArrowUp") {
+                    if (playerPosition < Math.sqrt(difficulty.squares)) {
+                        return;
+                    };
+                    updateCharacterPosition('player', -`${Math.sqrt(difficulty.squares)}`, difficulty);
+                } else {
+                    // for when player presses any other key
+                    return;
+                }
             }
-            if (e.key === "ArrowRight") {
-                if (playerPosition % Math.sqrt(difficulty.squares) === (Math.sqrt(difficulty.squares) - 1)) {
-                    return;
-                };
-                updateCharacterPosition('player', 1, difficulty);
-            } else if (e.key === "ArrowLeft") {
-                if (playerPosition % Math.sqrt(difficulty.squares) === 0) {
-                    return;
-                };
-                updateCharacterPosition('player', -1, difficulty);
-            } else if (e.key === "ArrowDown") {
-                if (playerPosition >= (difficulty.squares - (Math.sqrt(difficulty.squares)))) {
-                    return;
-                };
-                updateCharacterPosition('player', Math.sqrt(difficulty.squares), difficulty);
-            } else if (e.key === "ArrowUp") {
-                if (playerPosition < Math.sqrt(difficulty.squares)) {
-                    return;
-                };
-                updateCharacterPosition('player', -`${Math.sqrt(difficulty.squares)}`, difficulty);
-            } else {
-                // stops other keys making character disappear
-                updateCharacterPosition('player', 0);
-            }
+        }
+        // only adds the event listener to the document the first time it is fired
+        if (keyListenerActive === false) {
+            document.body.addEventListener('keydown', keyboardMovement);
+            keyListenerActive = true;
         }
     }
 
-    if (keyListenerActive === false) {
-        document.body.addEventListener('keydown', keyboardMovement);
-        keyListenerActive = true;
-    }
-}
-
+    // mobile movement logic
     if (width < 992) {
         const squares = document.querySelectorAll('.square');
+        // logic to add click event listeners to squares (when the player is not on the final square)
         if (playerPosition < (difficulty.squares - 1)) {
-        const addClickListeners = () => {
-            if (playerPosition === (difficulty.squares - 1)) {
-                squares.forEach(square => {
-                    square.removeEventListener('click', mouseMovement);
-                })
-                return;
+            const addClickListeners = () => {
+                // remove all click event listeners when player reaches the final square
+                if (playerPosition === (difficulty.squares - 1)) {
+                    squares.forEach(square => {
+                        square.removeEventListener('click', mouseMovement);
+                    })
+                    return;
+                }
+                // only add click listener to sqaures right of the player's current position when on the bottom row, or below if they are on the row that is farthest to the right
+                if (playerPosition >= (difficulty.squares - (Math.sqrt(difficulty.squares)))) {
+                    squares.forEach(square => {
+                        square.removeEventListener('click', mouseMovement);
+                    })
+                    squares[playerPosition + 1].addEventListener('click', mouseMovement);
+                    return;
+                } else if (playerPosition % Math.sqrt(difficulty.squares) === (Math.sqrt(difficulty.squares) - 1)) {
+                    squares.forEach(square => {
+                        square.removeEventListener('click', mouseMovement);
+                    })
+                    squares[playerPosition + Math.sqrt(difficulty.squares)].addEventListener('click', mouseMovement);
+                    return;
+                } else {
+                    squares[playerPosition + 1].addEventListener('click', mouseMovement);
+                    squares[playerPosition + Math.sqrt(difficulty.squares)].addEventListener('click', mouseMovement);
+                }
             }
-            if (playerPosition >= (difficulty.squares - (Math.sqrt(difficulty.squares)))) {
-                squares.forEach(square => {
-                    square.removeEventListener('click', mouseMovement);
-                })
-                squares[playerPosition + 1].addEventListener('click', mouseMovement);
-                return;
-            } else if (playerPosition % Math.sqrt(difficulty.squares) === (Math.sqrt(difficulty.squares) - 1)) {
-                squares.forEach(square => {
-                    square.removeEventListener('click', mouseMovement);
-                })
-                squares[playerPosition + Math.sqrt(difficulty.squares)].addEventListener('click', mouseMovement);
-                return;
-            } else {
-                squares[playerPosition + 1].addEventListener('click', mouseMovement);
-                squares[playerPosition + Math.sqrt(difficulty.squares)].addEventListener('click', mouseMovement);
-            }
-        }
 
-        const mouseMovement = e => {
-            if (e.target === squares[playerPosition + 1]) {
-                updateCharacterPosition('player', 1, difficulty);
-            } else {
-                updateCharacterPosition('player', Math.sqrt(difficulty.squares), difficulty);
+            const mouseMovement = e => {
+                // determine which square is clicked on, move to that square, and reset all event listeners for new position
+                if (e.target === squares[playerPosition + 1]) {
+                    updateCharacterPosition('player', 1, difficulty);
+                } else {
+                    updateCharacterPosition('player', Math.sqrt(difficulty.squares), difficulty);
+                }
+                squares.forEach(square => {
+                    square.removeEventListener('click', mouseMovement);
+                });
+                addClickListeners();
             }
-            squares.forEach(square => {
-                square.removeEventListener('click', mouseMovement);
-            });
-            addClickListeners();
-        }
 
-        squares[playerPosition + 1].addEventListener('click', mouseMovement);
-        squares[playerPosition + Math.sqrt(difficulty.squares)].addEventListener('click', mouseMovement);
+            // add event listeners
+            squares[playerPosition + 1].addEventListener('click', mouseMovement);
+            squares[playerPosition + Math.sqrt(difficulty.squares)].addEventListener('click', mouseMovement);
+        }
     }
-}
 };
 
 /** begins the player's turn */
@@ -328,6 +346,7 @@ const createDifficultyButtons = () => {
 
 createDifficultyButtons();
 
+/** resets the game by reloading the page */
 const resetGame = function() {
     window.location.reload();
 };

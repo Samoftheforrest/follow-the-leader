@@ -36,7 +36,7 @@ const difficulties = [{
     startingSpeed: 1.25
 }, {
     mode: 'Hard',
-    squares: 49,
+    squares: 36,
     startingSpeed: 1
 }];
 
@@ -128,6 +128,7 @@ const playerWins = difficulty => {
 };
 
 const playerLoses = () => {
+    movementEnabled = false;
     gameAreas.forEach(area => {
         area.classList.add('d-none');
     });

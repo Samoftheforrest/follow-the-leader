@@ -41,7 +41,6 @@ Trapped behind enemy lines, with a set of trecherous minefields ahead, how many 
     + [Updating Score](#updating-score)
     + [Get in Touch](#get-in-touch)
   * [Bugs](#bugs)
-    + [Gaps Between Game Squares and Game Board Container](#gaps-between-game-squares-and-game-board-container)
     + [Game Board Obscured by Social Icons on Laptop Screens](#game-board-obscured-by-social-icons-on-laptop-screens)
     + [Leader Moves Off the Game Board](#leader-moves-off-the-game-board)
     + [Player still able to move after getting to the final square](#player-still-able-to-move-after-getting-to-the-final-square)
@@ -316,7 +315,7 @@ This test has been successful.
 Because the social icons section has been absolutely positioned to the bottom of the screen, and the game board had a `min-height` set on it, this would cause overlapping between the two sections when the viewport height was less than the game board's `min-height` and the social icon's height together.
 
 - **Fix**
-To fix this, I added a media query that replaces the absolute positioning of the social icons section with `position: static` on certain screen sizes.
+To fix this, I removed the absolute positioning from the social icons, and set the heights of both the game area and the social icons area using `vh` units so that they never overflow from the screen. I also added a `min-height` value on to both of the areas to ensure that they would not shrink too small on certain devices.
 
 - **Verdict**
 I have tested this fix on two mobile devices (Samsung Galaxy S8 and iPhone SE), two tablet devices (iPad Mini and iPad Air), a laptop and a desktop and the sections are not overlapping. I have determined that this fix has been successful.
